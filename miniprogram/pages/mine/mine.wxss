@@ -5,7 +5,10 @@ page {
 .minebigbox {
   height: 100%;
 }
-
+.minebigbox button{
+  color: #F9FAF5;
+  background: #12B7F5;
+}
 .usertopimg {
   width: 35%;
   height: 260rpx;
