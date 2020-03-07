@@ -1,7 +1,6 @@
 <view class="minebigbox" style="background: {{back}};">
   <image class="usertopimg" style="box-shadow: 0 0 10rpx {{boxcolor}};" src="{{userimg}}"></image>
-  <button open-type="getUserInfo" bindgetuserinfo="onGotUserInfo" wx:if='{{username == undefined}}'>获取用户信息</button>
-  <text class="username" style="color:{{colors}};" wx:else>{{username}}</text>
+  <text class="username" style="color:{{colors}};">{{username}}</text>
   <view class="likebox" style="border: 1px solid colors">
     <view class="likebox-top" style="color:{{colors}};">喜欢的歌 (234)</view>
     <view class="inlikebox">

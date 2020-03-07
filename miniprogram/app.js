@@ -27,11 +27,6 @@ App({
             success: res => {
               this.globalData.username = res.userInfo.nickName
               this.globalData.usertopimg = res.userInfo.avatarUrl
-            },
-            fill:err =>{
-              console.log(err)
-              this.globalData.username = undefined
-              this.globalData.usertopimg = undefined
             }
           })
         }
