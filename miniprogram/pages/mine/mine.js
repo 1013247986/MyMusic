@@ -13,7 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    if (app.globalData.usertopimg !== null && app.globalData.username !== null) {
+    if (app.globalData.usertopimg !== undefined && app.globalData.username !== undefined) {
       this.setData({
         userimg: app.globalData.usertopimg,
         username: app.globalData.username

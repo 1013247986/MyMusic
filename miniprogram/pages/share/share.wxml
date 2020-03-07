@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container" style="background: {{back}};">
   <view class="share-top">
     <view class="user-box">1</view>
     <view class="user-box">2</view>
