@@ -1,2 +1,30 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class="home" style="  background: {{back}};">
+  <swiper autoplay="true" interval="5000" duration="500" indicator-color="{{colors}}" indicator-active-color="{{boxcolor}}" previous-margin='30rpx' next-margin='30rpx' indicator-dots='true' circular="true">
+    <block>
+      <swiper-item style='background:red;'>
+        <image src=""></image>
+      </swiper-item>
+      <swiper-item style='background:pink;'>
+        <image src=""></image>
+      </swiper-item>
+      <swiper-item style='background:orange;'>
+        <image src=""></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="homecenterbox">
+    <view class="inhomecenterbox"></view>
+    <view class="inhomecenterbox"></view>
+    <view class="inhomecenterbox"></view>
+    <view class="inhomecenterbox"></view>
+  </view>
+  <view class="homeRecommend">
+    <text class="left" style="color:{{colors}};">今日推荐</text>
+    <view class="right" style="color:{{colors}};">更多
+      <text class="rightbtn"></text>
+    </view>
+  </view>
+  <view class="homeRecommendBox">
+    <view class="homeRecommendInBox"></view>
+  </view>
+</view>

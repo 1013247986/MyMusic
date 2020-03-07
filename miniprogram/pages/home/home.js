@@ -1,17 +1,10 @@
-// pages/home/home.js
+var app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   * 
-   */
   data: {
-
+    back: app.globalData.back, //背景色
+    colors: app.globalData.colors, //字体颜色
+    boxcolor: app.globalData.boxcolor, // 盒子背景色
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function() {
    
   },
