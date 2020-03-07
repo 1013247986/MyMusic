@@ -10,6 +10,9 @@ Page({
     back: app.globalData.back, //背景色
     colors: app.globalData.colors, //字体颜色
     boxcolor: app.globalData.boxcolor, // 盒子背景色
+    music:"勇气",
+    username:"木子李",
+    userComment:" flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。"
   },
 
   /**

@@ -1,16 +1,36 @@
-<view class="container" style="background: {{back}};">
+<view class="sharebigbox" style="background: {{back}};">
   <view class="share-top">
-    <view class="user-box">1</view>
-    <view class="user-box">2</view>
-    <view class="user-box">3</view>
-    <view class="user-box">4</view>
-    <view class="user-box">5</view>
-    <view class="user-box">6</view>
+    <view class="user-box" style="background:{{boxcolor}}">
+      <view class="userimg"></view>
+      <view class="username" style="color:{{colors}};">{{username}}</view>
+    </view>
+    <view class="user-box" style="background:{{boxcolor}}">
+      <view class="userimg"></view>
+      <view class="username" style="color:{{colors}};">{{username}}</view>
+    </view>
+    <view class="user-box" style="background:{{boxcolor}}">
+      <view class="userimg"></view>
+      <view class="username" style="color:{{colors}};">{{username}}</view>
+    </view>
+    <view class="user-box" style="background:{{boxcolor}}">
+      <view class="userimg"></view>
+      <view class="username" style="color:{{colors}};">{{username}}</view>
+    </view>
+    <view class="user-box" style="background:{{boxcolor}}">
+      <view class="userimg"></view>
+      <view class="username" style="color:{{colors}};">{{username}}</view>
+    </view>
+    <view class="user-box" style="background:{{boxcolor}}">
+      <view class="userimg"></view>
+      <view class="username" style="color:{{colors}};">{{username}}</view>
+    </view>
   </view>
   <view class="share-bottom">
-    <view class="music-title" style="color:{{colors}};">勇气</view>
-    <view class="user-comment">非常好听</view>
-    <view class="userimg"></view>
-    <view class="username">木子李</view>
+    <view class="music-title" style="color:{{colors}};">{{music}}</view>
+    <view class="user-comment" style="color:{{colors}};">{{userComment}}</view>
+    <view class="user-message">
+      <view class="userimg"></view>
+      <view class="username" style="color:{{colors}};">{{username}}</view>
+    </view>
   </view>
 </view>
