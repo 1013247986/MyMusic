@@ -7,5 +7,10 @@
     <view class="user-box">5</view>
     <view class="user-box">6</view>
   </view>
-  <view class="share-bottom">2</view>
+  <view class="share-bottom">
+    <view class="music-title" style="color:{{colors}};">勇气</view>
+    <view class="user-comment">非常好听</view>
+    <view class="userimg"></view>
+    <view class="username">木子李</view>
+  </view>
 </view>
