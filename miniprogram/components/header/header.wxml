@@ -1,0 +1,5 @@
+<!-- 组件模板 -->
+<view class="header">
+  <input><image></image></input>
+  <slot></slot>
+</view>
