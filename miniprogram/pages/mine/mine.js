@@ -13,6 +13,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+<<<<<<< HEAD
     console.log(app.globalData.usertopimg)
     if (app.globalData.usertopimg !== null && app.globalData.username !== null){
       this.setData({
@@ -21,6 +22,13 @@ Page({
       })
     }
 
+=======
+    this.setData({
+      userimg: app.globalData.usertopimg,
+      username: app.globalData.username,
+    })
+    // console.log(username);
+>>>>>>> 7c7e179c80e784188de2dcdb490f098d6798b01d
   },
 
   /**
