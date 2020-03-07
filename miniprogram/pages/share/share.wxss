@@ -1,0 +1,10 @@
+.share-top{
+  width: 100%;
+  height: 25%;
+  background: red;
+}
+.share-bottom{
+  width: 100%;
+  height: 35%;
+  background: orange;
+}
