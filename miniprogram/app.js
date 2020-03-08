@@ -4,10 +4,9 @@ App({
     back: '#0D0B21', //背景色
     colors: '#F9FAF5', //字体颜色
     boxcolor: '#12B7F5', // 盒子背景色
-    toptext: true, //头部字体开关
+    yinyue: true, //音乐库选择
     username: '', //用户名
-    usertopimg: '', // 用户头像地址
-    yinyue: '', //音乐选择
+    usertopimg: ''// 用户头像地址
   },
   onLaunch: function(options) {
     if (!wx.cloud) {
