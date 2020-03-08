@@ -1,4 +1,5 @@
-<view class="minebigbox" style="background: {{back}};">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="minebigbox" style="background: {{back}};margin-top:{{height}}px">
   <image class="usertopimg" style="box-shadow: 0 0 10rpx {{boxcolor}};" src="{{userimg}}"></image>
   <text class="username" style="color:{{colors}};">{{username}}</text>
   <view class="likebox" style="border: 1px solid colors">

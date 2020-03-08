@@ -40,5 +40,8 @@
   margin: 140rpx auto;
   border-radius: 20rpx;
   text-align: center;
-  min-height: 1rem;
+  min-height: 1.7rem;
+}
+.yitiaoxian{
+  border: 1px solid red;
 }
