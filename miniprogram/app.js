@@ -19,6 +19,12 @@ App({
         traceUser: true,
       })
     }
+    // 获取设备顶部窗口的高度
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.height = res.statusBarHeight
+      }
+    })
     // 获取用户信息
     wx.getSetting({
       success: res => {

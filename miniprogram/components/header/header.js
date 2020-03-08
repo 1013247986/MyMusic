@@ -1,7 +1,20 @@
+const app = getApp()
 Component({
-  options: {
-    multipleSlots: true
+  properties: {
+    navbarData: { //navbarData   由父页面传递的数据，变量名字自命名
+      type: Object,
+      value: {},
+      observer: function(newVal, oldVal) {}
+    }
   },
-  properties: { /* ... */ },
-  methods: { /* ... */ }
+  data: {
+    height: '',
+  },
+  attached: function() {
+    // 定义导航栏的高度   方便对齐
+    this.setData({
+      height: app.globalData.height
+    })
+  },
+  methods: {}
 })

@@ -1,9 +1,11 @@
 /**app.wxss**/
-page{
+
+page {
+  position: relative;
   height: 100%;
-  border-top: 1px solid #666464;
   box-sizing: border-box;
 }
+
 .container {
   display: flex;
   flex-direction: column;

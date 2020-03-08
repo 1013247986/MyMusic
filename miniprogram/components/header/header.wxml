@@ -1,5 +1,6 @@
-<!-- 组件模板 -->
-<view class="header">
-  <input><image></image></input>
-  <slot></slot>
+<view class='nav-wrap' style='height: {{height*2 + 62}}px;'>
+  <switch type="switch" class="switchBtn" color="#12B7F5"></switch>
+  <!--  导航栏 中间的标题 -->
+  <view class='nav-title' style='line-height: {{height*2 + 46}}px;'>{{navbarData.title}}</view>
+  <input type="text" class="search" placeholder="搜索" focus="ture"></input>
 </view>

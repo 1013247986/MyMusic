@@ -1,35 +1,36 @@
-<view class="home" style="  background: {{back}};">
-  <swiper autoplay="true" interval="5000" duration="500" indicator-color="{{colors}}" indicator-active-color="{{boxcolor}}" previous-margin='30rpx' next-margin='30rpx' indicator-dots='true' circular="true">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="home" style="background: {{back}};margin-top:{{height}}px">
+  <swiper autoplay="true " interval="5000 " duration="500 " indicator-color="{{colors}} " indicator-active-color="{{boxcolor}} " previous-margin='30rpx' next-margin='30rpx' indicator-dots='true' circular="true ">
     <block>
       <swiper-item style='background:red;'>
-        <image src=""></image>
+        <image ></image>
       </swiper-item>
       <swiper-item style='background:pink;'>
-        <image src=""></image>
+        <image ></image>
       </swiper-item>
       <swiper-item style='background:orange;'>
-        <image src=""></image>
+        <image ></image>
       </swiper-item>
     </block>
   </swiper>
-  <view class="homecenterbox">
-    <view class="inhomecenterbox"></view>
-    <view class="inhomecenterbox"></view>
-    <view class="inhomecenterbox"></view>
-    <view class="inhomecenterbox"></view>
+  <view class="homecenterbox ">
+    <view class="inhomecenterbox "></view>
+    <view class="inhomecenterbox "></view>
+    <view class="inhomecenterbox "></view>
+    <view class="inhomecenterbox "></view>
   </view>
-  <view class="homeRecommend">
-    <text class="left" style="color:{{colors}};">今日推荐</text>
-    <view class="right" style="color:{{colors}};">更多
-      <text class="rightbtn"></text>
+  <view class="homeRecommend ">
+    <text class="left " style="color:{{colors}}; ">今日推荐</text>
+    <view class="right " style="color:{{colors}}; ">更多
+      <text class="rightbtn "></text>
     </view>
   </view>
-  <view class="homeRecommendBox">
-    <view class="homeRecommendInBox">
-      <image class="boxinimg"></image>
-      <view class="boxintoptext" style="color:{{colors}};">春娇与志明</view>\n
-      <view class="boxintopname">街道办GDC/欧阳耀莹</view>
-      <image class="boxintoprightbtn" src="../../images/bofangbtn.png"></image>
+  <view class="homeRecommendBox ">
+    <view class="homeRecommendInBox ">
+      <image class="boxinimg "></image>
+      <view class="boxintoptext " style="color:{{colors}}; ">春娇与志明</view>\n
+      <view class="boxintopname ">街道办GDC/欧阳耀莹</view>
+      <image class="boxintoprightbtn " src="../../images/bofangbtn.png "></image>
     </view>
   </view>
 </view>

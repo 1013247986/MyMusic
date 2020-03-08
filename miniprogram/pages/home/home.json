@@ -1,4 +1,5 @@
 {
-  "usingComponents": {},
-  "navigationBarTitleText": "音乐馆"
+  "usingComponents": {
+    "nav-bar": "/components/header/header"
+  }
 }
