@@ -1,6 +1,23 @@
 <block wx:if="{{bfpage}}">
   <view class="Playbackpage" style="background:{{back}}">
-     <text class="bfpagereturn" bindtap="setbfpage"></text>
+    <text class="bfpagereturn" bindtap="setbfpage"></text>
+    <view class="bfpagetoptext" style="color:{{colors}};">
+      <text>歌曲</text> |
+      <text>歌手</text>
+    </view>
+    <image class="bfpagetopbigimg"></image>
+    <view class="Play-song-name" style="color:{{colors}};">春娇与志明</view>
+    <view class="Play-singer">街道办GDC/欧阳耀莹</view>
+    <view class="Play-Lyric">初见便是初念，这杯酒，叫做初念</view>
+    <image class="Play-heart"></image>
+    <!-- <audio src=""></audio>
+    <view>
+      <view class="one-column play-it" bindtap="playMusic">
+        <view>点击播放</view>
+      </view>
+      <progress class="music-prog" bindtouchmove="setTouchMove" percent="{{musicPercent}}"></progress>
+      <view class="percent-num">{{musicPercent}}%</view>
+    </view> -->
   </view>
 </block>
 <block wx:if="{{bfbtn}}">

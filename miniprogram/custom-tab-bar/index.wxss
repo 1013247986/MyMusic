@@ -20,8 +20,8 @@
 
 .bfbtn {
   padding: 0 20rpx;
-  border: 1px solid #F9FAF5;
-  box-shadow:0 0 10rpx #12B7F5 inset; 
+  border: 1px solid #f9faf5;
+  box-shadow: 0 0 10rpx #12b7f5 inset;
 }
 
 .bfbtn .gimage {
@@ -31,7 +31,7 @@
   bottom: 10rpx;
   border: 1px solid transparent;
   border-radius: 50%;
-  animation:headRotate 4s linear infinite;
+  animation: headRotate 4s linear infinite;
 }
 
 .bfbtn text {
@@ -57,25 +57,81 @@
 .bottztbtn:hover {
   box-shadow: 0 0 10rpx #f9faf5;
 }
-.Playbackpage{
-  height: calc(100vh - 15vh);
+
+.Playbackpage {
+  height: 90vh;
   background: white;
   width: 100%;
-  border-top:1px solid rgb(131, 131, 130);
   box-sizing: border-box;
+  position: relative;
+  padding: 1rpx 72rpx;
 }
-.bfpagereturn{
+
+.bfpagereturn {
   display: block;
   width: 25rpx;
   height: 25rpx;
-  border-right: 6rpx solid #F9FAF5;
-  border-bottom: 6rpx solid #F9FAF5;
-  margin: 30rpx 40rpx;
+  border-right: 6rpx solid #f9faf5;
+  border-bottom: 6rpx solid #f9faf5;
+  margin-top:35rpx;
   transform: rotate(45deg);
 }
-@keyframes headRotate{
-  0% {transform: rotate(0deg);}
-  50% {transform: rotate(180deg);}
-  100% {transform: rotate(360deg);}
+
+.bfpagetoptext {
+  font-size: 24rpx;
+  display: inline-block;
+  letter-spacing: 2rpx;
+  position: absolute;
+  top: 45rpx;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
+.bfpagetopbigimg {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600rpx;
+  height: 600rpx;
+  background: pink;
+  position: absolute;
+  margin: 50rpx auto 0;
+  border: 1px solid transparent;
+  border-radius: 20rpx;
+}
+
+.Play-song-name{
+  margin-top: 720rpx;
+  font-weight: 900;
+  letter-spacing: 2rpx;
+}
+.Play-singer{
+  margin-top: 15rpx;
+  color: rgb(143, 143, 143);
+  font-size: 24rpx;
+}
+.Play-Lyric{
+  margin-top: 15rpx;
+  color: rgb(143, 143, 143);
+  font-size: 24rpx;
+}
+.Play-heart{
+  width: 50rpx;
+  height: 50rpx;
+  background: red;
+  position: absolute;
+  right: 72rpx;
+  top: 810rpx;
+}
+@keyframes headRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
