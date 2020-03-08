@@ -25,6 +25,11 @@
     </view>
   </view>
   <view class="homeRecommendBox">
-    <view class="homeRecommendInBox"></view>
+    <view class="homeRecommendInBox">
+      <image class="boxinimg"></image>
+      <view class="boxintoptext" style="color:{{colors}};">春娇与志明</view>\n
+      <view class="boxintopname">街道办GDC/欧阳耀莹</view>
+      <image class="boxintoprightbtn" src="../../images/bofangbtn.png"></image>
+    </view>
   </view>
 </view>

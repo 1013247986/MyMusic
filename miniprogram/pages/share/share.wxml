@@ -25,6 +25,9 @@
       <view class="username" style="color:{{colors}};">{{username}}</view>
     </view>
   </view>
+  <view class="share-center">
+     <text class="share-center-text" style="color:{{colors}};">极致音乐,与你共享</text>
+  </view>
   <view class="share-bottom">
     <view class="music-title" style="color:{{colors}};">{{music}}</view>
     <view class="user-comment" style="color:{{colors}};">{{userComment}}</view>

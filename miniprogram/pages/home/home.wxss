@@ -22,7 +22,7 @@
   padding: 0 20rpx;
   height: 42rpx;
   font-size:28rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
 }
 .homeRecommend .left{
   font-weight: 900;
@@ -40,4 +40,42 @@
   border-top: 4rpx solid #F9FAF5;
   border-right: 4rpx solid #F9FAF5;
   margin:10rpx 0 0 20rpx;
+}
+.homeRecommendInBox{
+  padding: 10rpx 20rpx;
+  position: relative;
+}
+.boxinimg{
+  width: 110rpx;
+  height: 110rpx;
+  background: red;
+  border: 1px solid #F9FAF5;
+  border-radius: 12rpx;
+  margin-right: 26rpx;
+}
+.boxintoptext{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+}
+.boxintopname{
+  display: inline-block;
+  color: rgb(129, 125, 125);
+  font-size: 26rpx;
+  position: relative;
+  bottom: 20rpx;
+  right: 170rpx;
+}
+.boxintoprightbtn{
+   position: absolute;
+   right: 30rpx;
+   top: 40rpx;
+   height: 60rpx;
+   width: 60rpx;
+   border-radius: 50%;
+}
+.boxintoprightbtn:hover{
+   box-shadow: 0 0 10rpx #F9FAF5;
 }
