@@ -6,9 +6,11 @@ App({
     boxcolor: '#12B7F5', // 盒子背景色
     yinyue: true, //音乐库选择
     username: '', //用户名
-    usertopimg: ''// 用户头像地址
+    usertopimg: '',// 用户头像地址
+    indexs:0
   },
   onLaunch: function(options) {
+    wx.hideTabBar()
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {

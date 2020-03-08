@@ -25,6 +25,7 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
+    "custom":true,
     "color": "#12B7F5",
     "selectedColor": "#F9FAF5",
     "borderStyle": "white",
@@ -56,6 +57,7 @@
       }
     ]
   },
+  "usingComponents": {},
   "sitemapLocation": "sitemap.json",
   "style": "v2"
 }

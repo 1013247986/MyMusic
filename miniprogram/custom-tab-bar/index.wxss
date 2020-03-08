@@ -1,0 +1,81 @@
+.intabBarbox {
+  display: inline-block;
+  width: 25%;
+  line-height: 30rpx;
+  text-align: center;
+  font-size: 28rpx;
+  position: relative;
+}
+
+.intabBarimg {
+  width: 60rpx;
+  height: 60rpx;
+  margin: 0 auto;
+}
+
+.tabBarbox {
+  padding-top: 10rpx;
+  border-top: 1px solid #696969;
+}
+
+.bfbtn {
+  padding: 0 20rpx;
+  border: 1px solid #F9FAF5;
+  box-shadow:0 0 10rpx #12B7F5 inset; 
+}
+
+.bfbtn .gimage {
+  height: 70rpx;
+  width: 70rpx;
+  position: relative;
+  bottom: 10rpx;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  animation:headRotate 4s linear infinite;
+}
+
+.bfbtn text {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  line-height: 28rpx;
+  position: relative;
+  bottom: 25rpx;
+}
+
+.bottztbtn {
+  float: right;
+  width: 60rpx;
+  height: 60rpx;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  margin-top: 10rpx;
+  position: absolute;
+  bottom: 125rpx;
+  right: 20rpx;
+}
+
+.bottztbtn:hover {
+  box-shadow: 0 0 10rpx #f9faf5;
+}
+.Playbackpage{
+  height: 100vh;
+  background: white;
+  width: 100%;
+  border-top:1px solid rgb(131, 131, 130);
+  box-sizing: border-box;
+}
+.bfpagereturn{
+  display: block;
+  width: 25rpx;
+  height: 25rpx;
+  border-right: 6rpx solid #F9FAF5;
+  border-bottom: 6rpx solid #F9FAF5;
+  margin: 30rpx 40rpx;
+  transform: rotate(45deg);
+}
+@keyframes headRotate{
+  0% {transform: rotate(0deg);}
+  50% {transform: rotate(180deg);}
+  100% {transform: rotate(360deg);}
+}
+
