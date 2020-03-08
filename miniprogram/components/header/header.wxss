@@ -5,7 +5,6 @@
   width: 100%;
   top: 0;
   background: #0d0b21;
-  z-index: 9999999;
   border-bottom: 1px solid #666464;
 }
 
@@ -19,14 +18,9 @@
 /* 标题要居中 */
 
 .nav-title {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
+  top: 20rpx;
   text-align: center;
-  max-width: 400rpx;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   margin: auto;
@@ -34,14 +28,15 @@
 }
 
 .search {
-  width: 90%;
+  width: 85%;
   line-height: 15rpx;
   background: #f9faf5;
-  margin: 140rpx auto;
+  margin: 0 auto;
   border-radius: 20rpx;
   text-align: center;
-  min-height: 1.7rem;
+  min-height: 50rpx;
 }
 .yitiaoxian{
-  border: 1px solid red;
+  padding-top: 10rpx;
+  border-top: 2px solid #9b9a9a;
 }
