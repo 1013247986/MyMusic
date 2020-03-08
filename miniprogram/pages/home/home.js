@@ -4,9 +4,15 @@ Page({
     back: app.globalData.back, //背景色
     colors: app.globalData.colors, //字体颜色
     boxcolor: app.globalData.boxcolor, // 盒子背景色
+    // 组件所需的参数
+    nvabarData: {
+      title: '音乐馆', //导航栏 中间的标题
+    },
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 62,
   },
   onLoad: function() {
-   
+
   },
 
   /**

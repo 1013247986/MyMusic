@@ -12,7 +12,13 @@ Page({
     boxcolor: app.globalData.boxcolor, // 盒子背景色
     music:"勇气",
     username:"木子李",
-    userComment:" flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。"
+    userComment:" flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。",
+    // 组件所需的参数
+    nvabarData: {
+      title: '分享', //导航栏 中间的标题
+    },
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 62, 
   },
 
   /**

@@ -6,7 +6,7 @@ App({
     boxcolor: '#12B7F5', // 盒子背景色
     yinyue: true, //音乐库选择
     username: '', //用户名
-    usertopimg: ''// 用户头像地址
+    usertopimg: '' // 用户头像地址
   },
   onLaunch: function(options) {
     if (!wx.cloud) {
@@ -17,6 +17,12 @@ App({
         traceUser: true,
       })
     }
+    // 获取设备顶部窗口的高度
+    wx.getSystemInfo({
+      success: (res) => {
+        this.globalData.height = res.statusBarHeight
+      }
+    })
     // 获取用户信息
     wx.getSetting({
       success: res => {

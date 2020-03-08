@@ -1,4 +1,5 @@
-<view class="sharebigbox" style="background: {{back}};">
+<nav-bar navbar-data='{{nvabarData}}'></nav-bar>
+<view class="sharebigbox" style="background: {{back}};margin-top:{{height}}px">
   <view class="share-top">
     <view class="user-box" style="background:{{boxcolor}}">
       <view class="userimg"></view>
