@@ -24,9 +24,6 @@
 }
 
 .likebox {
-  height: calc(100% - 260rpx - 185rpx);
-  overflow: hidden;
-  overflow-y: auto;
   box-sizing: border-box;
 }
 

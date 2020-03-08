@@ -2,12 +2,12 @@
 <view class="minebigbox" style="background: {{back}};margin-top:{{height}}px">
   <image class="usertopimg" style="box-shadow: 0 0 10rpx {{boxcolor}};" src="{{userimg}}"></image>
   <text class="username" style="color:{{colors}};">{{username}}</text>
+  <view class="likebox-top" style="color:{{colors}};">喜欢的歌 ( {{musicnum}} )</view>
   <view class="likebox" style="border: 1px solid colors">
-    <view class="likebox-top" style="color:{{colors}};">喜欢的歌 (234)</view>
-    <view class="inlikebox">
-      <view class="Songname" style="color:{{colors}};">遥远的她</view>
+    <view class="inlikebox" wx:for="{{myLikeMusic}}" wx:key="index">
+      <view class="Songname" style="color:{{colors}};">{{item.musicname}}</view>
       <view class="singer">
-        <text style="border: 1px solid {{colors}};background: {{boxcolor}};color:{{colors}};">QQ音乐</text>刘先生</view>
+        <text style="border: 1px solid {{colors}};background: {{boxcolor}};color:{{colors}};">{{item.Source}}</text>{{item.singername}}</view>
       <image src="../../images/bofangbtn.png"></image>
     </view>
   </view>

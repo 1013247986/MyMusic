@@ -1,4 +1,4 @@
-var app = getApp()
+let app = getApp()
 
 Page({
   data: {
@@ -13,15 +13,33 @@ Page({
     },
     // 此页面 页面内容距最顶部的距离
     height: app.globalData.height * 2 + 62,
+    myLikeMusic:null,
+    musicnum:0
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    // 1. 获取数据库引用
+    const db = wx.cloud.database()
     this.setData({
       userimg: app.globalData.usertopimg,
       username: app.globalData.username
+    })
+    db.collection('myLikeMusic').where({
+      username: app.globalData.username
+    }).get({
+      success: (res) => {
+        this.setData({
+          myLikeMusic:res.data,
+          musicnum: res.data.length
+        })
+        console.log(this.data.myLikeMusic)
+      },
+      fail:err =>{
+        console.log(err)
+      }
     })
   },
 

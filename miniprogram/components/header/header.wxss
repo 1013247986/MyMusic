@@ -5,7 +5,6 @@
   width: 100%;
   top: 0;
   background: #0d0b21;
-  border-bottom: 1px solid #666464;
 }
 
 .switchBtn {
