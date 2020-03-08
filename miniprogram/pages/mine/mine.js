@@ -7,16 +7,22 @@ Page({
     boxcolor: app.globalData.boxcolor, // 盒子背景色
     username: undefined,
     userimg: "",
+    // 组件所需的参数
+    nvabarData: {
+      title: '我的', //导航栏 中间的标题
+    },
+    // 此页面 页面内容距最顶部的距离
+    height: app.globalData.height * 2 + 62,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-      this.setData({
-        userimg: app.globalData.usertopimg,
-        username: app.globalData.username
-      })
+  onLoad: function(options) {
+    this.setData({
+      userimg: app.globalData.usertopimg,
+      username: app.globalData.username
+    })
   },
 
   /**

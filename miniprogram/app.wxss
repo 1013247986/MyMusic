@@ -1,10 +1,7 @@
 /**app.wxss**/
 
 page {
-  position: relative;
-  z-index: 9999998;
   height: 100%;
-  /* border-top: 1px solid #666464; */
   box-sizing: border-box;
 }
 
