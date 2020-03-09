@@ -9,7 +9,8 @@
     <view class="Play-song-name" style="color:{{colors}};">春娇与志明</view>
     <view class="Play-singer">街道办GDC/欧阳耀莹</view>
     <view class="Play-Lyric">初见便是初念，这杯酒，叫做初念</view>
-    <image class="Play-heart"></image>
+    <image wx:if="{{shouchangbtn}}" class="Play-heart" bindtap="collection" src="../../../images/shouchang.png"></image>
+    <image wx:else class="Play-heart" bindtap="deltmymu" src="../../../images/shouchangset.png"></image>
     <!-- <audio src=""></audio>
     <view>
       <view class="one-column play-it" bindtap="playMusic">
@@ -28,7 +29,6 @@
 </block>
 <image wx:if="{{bfbtn?bottbfimgbtn:false}}" bindtap="setbottbtn" class="bottztbtn" src="../../../images/bofangbtn.png"></image>
 <image wx:elif="{{bfbtn}}" bindtap="setbottbtn" class="bottztbtn" src="../../../images/bofangzhongbtn.png"></image>
-
 <cover-view class="tabBarbox" style="background:{{back}};" wx:if="{{tabbarkg}}">
   <cover-view class="intabBarbox" bindtap="switchTab" wx:for="{{list}}" wx:key="index" data-index="{{index}}" data-path="{{item.pagePath}}">
     <cover-image class="intabBarimg" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>

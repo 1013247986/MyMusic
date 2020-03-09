@@ -7,7 +7,9 @@ App({
     yinyue: true, //音乐库选择
     username: '', //用户名
     usertopimg: '',// 用户头像地址
-    indexs:0
+    indexs:0,
+    inopenid:'',
+    geid:''
   },
   onLaunch: function(options) {
     wx.hideTabBar()
@@ -19,6 +21,12 @@ App({
         traceUser: true,
       })
     }
+    wx.login({
+      success: (res)=> {
+        this.globalData.inopenid=res.code
+        console.log(this.globalData.inopenid)
+      }
+    })
     // 获取设备顶部窗口的高度
     wx.getSystemInfo({
       success: (res) => {
