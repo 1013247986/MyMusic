@@ -1,5 +1,5 @@
 let app = getApp()
-import { addto, deletes } from "../public/public.js"
+import { addto } from "../public/public.js"
 Component({
   data: {
     back: app.globalData.back, //背景色
@@ -49,7 +49,6 @@ Component({
       })
     },
     shangla(){
-      console.log(this.data.heights)
       this.setData({
         // 底部导航栏消失
         tabbarkg: !this.data.tabbarkg,

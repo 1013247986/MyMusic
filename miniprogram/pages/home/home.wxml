@@ -1,23 +1,19 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="home" style="background: {{back}};margin-top:{{height}}px">
-  <swiper autoplay="true " interval="5000 " duration="500 " indicator-color="{{colors}} " indicator-active-color="{{boxcolor}} " previous-margin='30rpx' next-margin='30rpx' indicator-dots='true' circular="true ">
-    <block>
-      <swiper-item style='background:red;'>
-        <image ></image>
-      </swiper-item>
-      <swiper-item style='background:pink;'>
-        <image ></image>
-      </swiper-item>
-      <swiper-item style='background:orange;'>
-        <image ></image>
+  <swiper autoplay="true " interval="5000 " duration="500 " indicator-color="{{colors}} " indicator-active-color="{{boxcolor}}" indicator-dots='true' circular="true ">
+    <block wx:for="{{rotationChart}}" wx:key="index">
+      <swiper-item>
+        <image class="lunboimg" src="{{item.img}}"></image>
       </swiper-item>
     </block>
   </swiper>
   <view class="homecenterbox ">
-    <view class="inhomecenterbox "></view>
-    <view class="inhomecenterbox "></view>
-    <view class="inhomecenterbox "></view>
-    <view class="inhomecenterbox "></view>
+    <block wx:for="{{classimg}}" wx:key="index">
+      <view class="inhomecenterbox ">
+        <image src="{{item.img}}"></image>
+        <text style="color:{{colors}};">{{item.text}}</text>
+      </view>
+    </block>
   </view>
   <view class="homeRecommend ">
     <text class="left " style="color:{{colors}}; ">今日推荐</text>

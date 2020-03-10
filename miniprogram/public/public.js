@@ -2,7 +2,6 @@ var app = getApp()
 app.globalData.yinyue
 let api = app.globalData.yinyue ? '1' : '2'
 
-
 module.export = {
   api
 }
@@ -21,7 +20,7 @@ export const addto = function (forms, datas) {
     })
   })
 }
-
+// 添加
 export const obtain = function (forms, condition) {
   return new Promise((resolve, reject) => {
     db.collection(`${forms}`).where({
