@@ -30,11 +30,24 @@
 .search {
   width: 85%;
   line-height: 15rpx;
-  background: #f9faf5;
+  background: #0d0b21;
   margin: 0 auto;
   border-radius: 20rpx;
   text-align: center;
   min-height: 50rpx;
+  border: 1px solid #f9faf5;
+  box-shadow: 0 0 10rpx #12B7F5 inset;
+  color: #f9faf5;
+  font-weight: 900;
+  font-size: 28rpx;
+  position: relative;
+}
+.search image{
+  width: 45rpx;
+  height: 45rpx;
+  position: absolute;
+  top: 5rpx;
+  left: 15rpx;
 }
 .yitiaoxian{
   padding-top: 10rpx;

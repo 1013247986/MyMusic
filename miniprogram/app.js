@@ -5,11 +5,13 @@ App({
     colors: '#F9FAF5', //字体颜色
     boxcolor: '#12B7F5', // 盒子背景色
     yinyue: true, //音乐库选择
-    username: '', //用户名
+    username: undefined, //用户名
     usertopimg: '',// 用户头像地址
     indexs:0,
     inopenid:'',
-    geid:''
+    geid:'',
+    zsyheight:"",
+    height:''
   },
   onLaunch: function(options) {
     wx.hideTabBar()
@@ -47,5 +49,7 @@ App({
         }
       }
     })
+    // 自适应播放page页面高度
+    this.globalData.zsyheight = wx.getSystemInfoSync().windowHeight - (this.globalData.height*2+27)
   }
 })

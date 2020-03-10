@@ -54,7 +54,24 @@ Page({
         console.log(err)
       })
   },
-
+  bindGetUserInfo: function (e) {
+    console.log(e.detail.userInfo)
+    if (e.detail.userInfo) {
+      wx.showToast({
+        title: '获取信息成功'
+      })
+      app.globalData.username = e.detail.userInfo.nickName
+      app.globalData.usertopimg = e.detail.userInfo.avatarUrl
+      this.setData({
+        userimg: app.globalData.usertopimg,
+        username: app.globalData.username
+      })
+    } else {
+      wx.showToast({
+        title: '获取信息失败'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面隐藏
    */

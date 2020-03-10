@@ -5,12 +5,13 @@ Component({
     back: app.globalData.back, //背景色
     colors: app.globalData.colors, //字体颜色
     boxcolor: app.globalData.boxcolor, // 盒子背景色
+    heights: app.globalData.zsyheight, // 自适应高度
     selected: 0, // 底部导航栏计算
     bfbtn: true, // 底部播放提示开关
-    bfpage: false, // 播放页面开关
     bottbfimgbtn: true, //底部播放暂停图标btn
     tabbarkg: true, //底部tabbar开关
     shouchangbtn: true, //收藏音乐开关
+    animationData:'',
     list: [
       {
         "pagePath": "/pages/home/home",
@@ -47,15 +48,41 @@ Component({
         selected: data.index
       })
     },
-    // 播放页面的开关
-    setbfpage() {
+    shangla(){
+      console.log(this.data.heights)
       this.setData({
-        // 播放页面显示和消失
-        bfpage: !this.data.bfpage,
         // 底部导航栏消失
         tabbarkg: !this.data.tabbarkg,
         // 底部导航栏上方播放消失
         bfbtn: !this.data.bfbtn
+      })
+      var animation = wx.createAnimation({
+        duration: 500,  //动画的持续时间
+        timingFunction: "linear", //	动画的效果设置为平均
+        delay: 0  //动画延迟时间无
+      })
+      this.animation = animation
+      animation.translateY(-this.data.heights).step(); //效果自己设定为主
+      this.setData({
+        animationData: animation.export()   //输出动画
+      })
+    },
+    xiala(){
+      this.setData({
+        // 底部导航栏消失
+        tabbarkg: !this.data.tabbarkg,
+        // 底部导航栏上方播放消失
+        bfbtn: !this.data.bfbtn
+      })
+      var animation = wx.createAnimation({
+        duration: 500,  //动画的持续时间
+        timingFunction: "linear", //	动画的效果设置为平均
+        delay: 0  //动画延迟时间无
+      })
+      this.animation = animation
+      animation.translateY(0).step(); //效果自己设定为主
+      this.setData({
+        animationData: animation.export()   //输出动画
       })
     },
     // 底部的播放按钮图片切换
@@ -66,48 +93,70 @@ Component({
     },
     // 收藏我喜欢的歌
     collection() {
-      this.setData({
-        shouchangbtn: false
-      })
-      // 添加我的收藏
-      addto('myLikeMusic', {
-        Source: "网易云音乐",
-        musicname: "忘情水",
-        singername: "刘先生",
-        username: app.globalData.username
-      }).then(data => {
-        app.globalData.geid = data._id
+      if (app.globalData.username == undefined) {
         wx.showToast({
-          title: '新增记录成功',
+          title: '请先登录账号'
         })
-      }).catch(err => {
-        wx.showToast({
-          title: '新增记录失败',
+        setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/mine/mine'
+          });
+        }, 1000)
+      } else {
+        this.setData({
+          shouchangbtn: false
         })
-      })
+        // 添加我的收藏
+        addto('myLikeMusic', {
+          Source: "网易云音乐",
+          musicname: "忘情水",
+          singername: "刘先生",
+          username: app.globalData.username
+        }).then(data => {
+          app.globalData.geid = data._id
+          wx.showToast({
+            title: '新增记录成功',
+          })
+        }).catch(err => {
+          wx.showToast({
+            title: '新增记录失败',
+          })
+        })
+      }
     },
     deltmymu() {
-      this.setData({
-        shouchangbtn: true
-      }) 
-      wx.cloud.callFunction({
-        // 云函数名称
-        name: 'remove',
-        // 传给云函数的参数
-        data: {
-          id: app.globalData.geid
-        },
-        success: (res)=> {
-          wx.showToast({
-            title: '取消收藏成功'
-          })
-        },
-        fail: err =>{
-          wx.showToast({
-            title: '取消收藏失败，服务器错误'
-          })
-        }
-      })
+      if (app.globalData.username == undefined) {
+        wx.showToast({
+          title: '请先登录账号'
+        })
+        setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/mine/mine'
+          });
+        }, 1000)
+      } else {
+        this.setData({
+          shouchangbtn: true
+        })
+        wx.cloud.callFunction({
+          // 云函数名称
+          name: 'remove',
+          // 传给云函数的参数
+          data: {
+            id: app.globalData.geid
+          },
+          success: (res) => {
+            wx.showToast({
+              title: '取消收藏成功'
+            })
+          },
+          fail: err => {
+            wx.showToast({
+              title: '取消收藏失败，服务器错误'
+            })
+          }
+        })
+      }
     }
   }
 })

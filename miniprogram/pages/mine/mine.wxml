@@ -1,7 +1,8 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="minebigbox" style="background: {{back}};margin-top:{{height}}px">
   <image class="usertopimg" style="box-shadow: 0 0 10rpx {{boxcolor}};" src="{{userimg}}"></image>
-  <text class="username" style="color:{{colors}};">{{username}}</text>
+  <text wx:if="{{username}}" class="username" style="color:{{colors}};">{{username}} 欢迎回家！</text>
+  <button wx:else open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
   <view class="likebox-top" style="color:{{colors}};">喜欢的歌 ( {{musicnum}} )</view>
   <view class="likebox" style="border: 1px solid colors">
     <view class="inlikebox" wx:for="{{myLikeMusic}}" wx:key="index">

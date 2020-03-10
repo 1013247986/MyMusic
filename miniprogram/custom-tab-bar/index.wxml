@@ -1,6 +1,6 @@
-<block wx:if="{{bfpage}}">
-  <view class="Playbackpage" style="background:{{back}}">
-    <text class="bfpagereturn" bindtap="setbfpage"></text>
+<block>
+  <view class="Playbackpage" style="background:{{back}}" animation="{{animationData}}" style="height:{{heights}}px;bottom:{{-heights}}px;">
+    <text class="bfpagereturn" bindtap="xiala"></text>
     <view class="bfpagetoptext" style="color:{{colors}};">
       <text>歌曲</text> |
       <text>歌手</text>
@@ -22,7 +22,7 @@
   </view>
 </block>
 <block wx:if="{{bfbtn}}">
-  <view class="bfbtn" style="background:{{back}}" bindtap="setbfpage">
+  <view class="bfbtn" style="background:{{back}}" bindtap="shangla">
     <image class="gimage" src="../../../images/bofangbtn.png"></image>
     <text style="color:{{colors}};">春娇与志明</text>
   </view>

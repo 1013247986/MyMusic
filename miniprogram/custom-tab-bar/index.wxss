@@ -59,12 +59,12 @@
 }
 
 .Playbackpage {
-  height: 90vh;
-  background: white;
+  background: #0D0B21;
   width: 100%;
   box-sizing: border-box;
-  position: relative;
+  position: absolute;
   padding: 1rpx 72rpx;
+  z-index: 2;
 }
 
 .bfpagereturn {
