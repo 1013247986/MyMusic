@@ -11,7 +11,10 @@ App({
     inopenid:'',
     geid:'',
     zsyheight:"",
-    height:''
+    height:'',
+    mp3:"https://sharefs.yun.kugou.com/202003111947/c3a104174cc9b7719d765e2ddf5a4042/G123/M02/1C/19/W5QEAFr1dc-AAv0VADIRiNt3trs401.mp3",
+    singerName:"街道办GDC、欧阳耀莹",
+    songName:"春娇与志明"
   },
   onLaunch: function(options) {
     wx.hideTabBar()

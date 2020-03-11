@@ -1,4 +1,5 @@
 const app = getApp();
+import { getAjax } from "../../public/public.js"
 // pages/home/home.js
 Page({
 
@@ -20,14 +21,26 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function(options) {
-
+  onLoad: function (options) {
+    // getAjax("http://msearchcdn.kugou.com/api/v3/search/song?showtype=14&highlight=em&pagesize=30&tag_aggr=1&tagtype=全部&plat=0&sver=5&keyword=春娇与志明&correct=1&api_ver=1&version=9108&page=1&area_code=1&tag=1&with_res_tag=1", {})
+    //   .then(data => {
+    //     let text = JSON.parse(data.data.replace(/<!--KG_TAG_RES_END-->|<!--KG_TAG_RES_START-->|<em>|<\\\/em>/g, ""))
+    //     console.log(text.data.info)
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+    // getAjax("http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=35492eb4b4bee97c6c9154e17d1ac3a6", {})
+    //   .then(data => {
+    //     console.log(data)
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
@@ -45,35 +58,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })

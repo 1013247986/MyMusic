@@ -5,6 +5,7 @@
   width: 100%;
   top: 0;
   background: #0d0b21;
+  z-index: 5;
 }
 
 .switchBtn {
@@ -52,4 +53,29 @@
 .yitiaoxian{
   padding-top: 10rpx;
   border-top: 2px solid #9b9a9a;
+}
+.listbox{
+  padding:0 5%;
+  background: #0D0B21;
+  border: 1rpx solid transparent;
+}
+.inlistbox{
+  margin-top: 25rpx;
+}
+.inlistbox image{
+   height: 50rpx;
+   width: 50rpx;
+   margin-right: 30rpx;
+}
+.inlistbox text{
+  font-size: 28rpx;
+  color:#F9FAF5;
+  line-height: 50rpx;
+  vertical-align: top;
+  width: calc(100% - 80rpx);
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+
 }

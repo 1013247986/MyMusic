@@ -6,29 +6,21 @@
       <text>歌手</text>
     </view>
     <image class="bfpagetopbigimg"></image>
-    <view class="Play-song-name" style="color:{{colors}};">春娇与志明</view>
-    <view class="Play-singer">街道办GDC/欧阳耀莹</view>
+    <view class="Play-song-name" style="color:{{colors}};">{{songName}}</view>
+    <view class="Play-singer">{{singerName}}</view>
     <view class="Play-Lyric">初见便是初念，这杯酒，叫做初念</view>
     <image wx:if="{{shouchangbtn}}" class="Play-heart" bindtap="collection" src="../../../images/shouchang.png"></image>
     <image wx:else class="Play-heart" bindtap="deltmymu" src="../../../images/shouchangset.png"></image>
-    <!-- <audio src=""></audio>
-    <view>
-      <view class="one-column play-it" bindtap="playMusic">
-        <view>点击播放</view>
-      </view>
-      <progress class="music-prog" bindtouchmove="setTouchMove" percent="{{musicPercent}}"></progress>
-      <view class="percent-num">{{musicPercent}}%</view>
-    </view> -->
   </view>
 </block>
 <block wx:if="{{bfbtn}}">
   <view class="bfbtn" style="background:{{back}}" bindtap="shangla">
     <image class="gimage" src="../../../images/bofangbtn.png"></image>
-    <text style="color:{{colors}};">春娇与志明</text>
+    <text style="color:{{colors}};">{{songName}}</text>
   </view>
 </block>
-<image wx:if="{{bfbtn?bottbfimgbtn:false}}" bindtap="setbottbtn" class="bottztbtn" src="../../../images/bofangbtn.png"></image>
-<image wx:elif="{{bfbtn}}" bindtap="setbottbtn" class="bottztbtn" src="../../../images/bofangzhongbtn.png"></image>
+<image wx:if="{{bfbtn?bottbfimgbtn:false}}" bindtap="boyy" class="bottztbtn" src="../../../images/bofangbtn.png"></image>
+<image wx:elif="{{bfbtn}}" bindtap="stop" class="bottztbtn" src="../../../images/bofangzhongbtn.png"></image>
 <cover-view class="tabBarbox" style="background:{{back}};" wx:if="{{tabbarkg}}">
   <cover-view class="intabBarbox" bindtap="switchTab" wx:for="{{list}}" wx:key="index" data-index="{{index}}" data-path="{{item.pagePath}}">
     <cover-image class="intabBarimg" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>

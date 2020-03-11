@@ -11,7 +11,9 @@ Component({
     bottbfimgbtn: true, //底部播放暂停图标btn
     tabbarkg: true, //底部tabbar开关
     shouchangbtn: true, //收藏音乐开关
-    animationData:'',
+    animationData: '',
+    singerName: app.globalData.singerName,
+    songName: app.globalData.songName,
     list: [
       {
         "pagePath": "/pages/home/home",
@@ -39,6 +41,18 @@ Component({
       }
     ] //tabBar的数据
   },
+  pageLifetimes: {
+    // 组件所在页面的生命周期函数
+    show: function () {
+      wx.onBackgroundAudioPause(function () {
+        this.setData({
+          bfbtn : false
+        })
+      })
+    },
+    hide: function () { },
+    resize: function () { },
+  },
   methods: {
     switchTab(e) {
       const data = e.currentTarget.dataset
@@ -48,7 +62,25 @@ Component({
         selected: data.index
       })
     },
-    shangla(){
+    // 播放音乐
+    boyy() {
+      console.log(this.data.singerName)
+      console.log(app.globalData.singerName)
+      this.setData({
+        bottbfimgbtn: !this.data.bottbfimgbtn
+      })
+      wx.playBackgroundAudio({
+        dataUrl: app.globalData.mp3
+      })
+    },
+    // 暂停音乐
+    stop() {
+      this.setData({
+        bottbfimgbtn: !this.data.bottbfimgbtn
+      })
+      wx.pauseBackgroundAudio()
+    },
+    shangla() {
       this.setData({
         // 底部导航栏消失
         tabbarkg: !this.data.tabbarkg,
@@ -66,7 +98,7 @@ Component({
         animationData: animation.export()   //输出动画
       })
     },
-    xiala(){
+    xiala() {
       this.setData({
         // 底部导航栏消失
         tabbarkg: !this.data.tabbarkg,
@@ -82,12 +114,6 @@ Component({
       animation.translateY(0).step(); //效果自己设定为主
       this.setData({
         animationData: animation.export()   //输出动画
-      })
-    },
-    // 底部的播放按钮图片切换
-    setbottbtn() {
-      this.setData({
-        bottbfimgbtn: !this.data.bottbfimgbtn
       })
     },
     // 收藏我喜欢的歌
@@ -123,6 +149,7 @@ Component({
         })
       }
     },
+
     deltmymu() {
       if (app.globalData.username == undefined) {
         wx.showToast({

@@ -3,6 +3,13 @@
   <!--  导航栏 中间的标题 -->
   <view class='nav-title' style='line-height: {{height*2 + 25}}px;'>{{navbarData.title}}</view>
   <view class="yitiaoxian">
-    <input type="text" class="search" placeholder="搜索" focus="ture"><image src="../../images/sousuo.png"></image></input>
+    <input type="text" class="search" placeholder="搜索" focus="ture" bindinput="inputsj">
+    <image src="../../images/sousuo.png"></image>
+    </input>
+  </view>
+  <view class="listbox" wx:if="{{values}}" style="height:{{zsyheight}}px">
+    <view class="inlistbox"  wx:for="{{datas}}" wx:key="index" data-id="{{item.hash}}" bindtap="musicid">
+        <image src="../../images/sousuo.png"></image><text>{{item.filename}}</text>
+    </view>
   </view>
 </view>
