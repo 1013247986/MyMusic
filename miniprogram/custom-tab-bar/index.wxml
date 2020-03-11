@@ -6,7 +6,7 @@
       <text>歌手</text>
     </view>
     <image class="bfpagetopbigimg"></image>
-    <view class="Play-song-name" style="color:{{colors}};">{{songName}}</view>
+    <view class="Play-song-name" style="color:{{colors}};" bindtap="watchBack">{{songName}}</view>
     <view class="Play-singer">{{singerName}}</view>
     <view class="Play-Lyric">初见便是初念，这杯酒，叫做初念</view>
     <image wx:if="{{shouchangbtn}}" class="Play-heart" bindtap="collection" src="../../../images/shouchang.png"></image>

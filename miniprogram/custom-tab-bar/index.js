@@ -1,5 +1,6 @@
 let app = getApp()
 import { addto } from "../public/public.js"
+let _this = null
 Component({
   data: {
     back: app.globalData.back, //背景色
@@ -12,7 +13,7 @@ Component({
     tabbarkg: true, //底部tabbar开关
     shouchangbtn: true, //收藏音乐开关
     animationData: '',
-    singerName: app.globalData.singerName,
+    singerName: app.globalData.name,
     songName: app.globalData.songName,
     list: [
       {
@@ -41,19 +42,21 @@ Component({
       }
     ] //tabBar的数据
   },
-  pageLifetimes: {
-    // 组件所在页面的生命周期函数
-    show: function () {
-      wx.onBackgroundAudioPause(function () {
-        this.setData({
-          bfbtn : false
-        })
-      })
-    },
-    hide: function () { },
-    resize: function () { },
+  lifetimes: {
+    attached: function () {
+      _this = this
+      getApp().watch(this.watchBack)
+      // 在组件实例进入页面节点树时执行
+    }
   },
   methods: {
+    watchBack: (name) => {
+      _this.setData({
+        bottbfimgbtn:false,
+        singerName: name,
+        songName: app.globalData.songName
+      })
+    },
     switchTab(e) {
       const data = e.currentTarget.dataset
       const url = data.path
@@ -65,7 +68,7 @@ Component({
     // 播放音乐
     boyy() {
       console.log(this.data.singerName)
-      console.log(app.globalData.singerName)
+      console.log(app.globalData.name)
       this.setData({
         bottbfimgbtn: !this.data.bottbfimgbtn
       })

@@ -28,7 +28,7 @@ Component({
         .then(data => {
           app.globalData.mp3 = data.data.url
           app.globalData.songName = data.data.songName
-          app.globalData.singerName = data.data.singerName
+          app.globalData.name = data.data.singerName
           // 播放音乐
             wx.playBackgroundAudio({
               dataUrl: app.globalData.mp3
