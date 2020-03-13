@@ -26,14 +26,24 @@ Page({
     })
   },
   scbfbtn(el) {
-    let data = el.currentTarget.dataset.shuju
-    console.log(data)
-    app.globalData.songName = data.musicname
-    app.globalData.mp3 = data.mp3
+    app.globalData.datas = this.data.myLikeMusic
+    app.globalData.leng = this.data.musicnum
+    app.globalData.subscript = el.currentTarget.dataset.num
+    app.globalData.songName = app.globalData.datas[app.globalData.subscript].musicname
+    app.globalData.mp3 = app.globalData.datas[app.globalData.subscript].hash
     app.globalData.shouchangbtn = false
     app.globalData.bfbtn = true
     app.globalData.bottbfimgbtn = false
-    app.globalData.name = data.singername
+    app.globalData.name = app.globalData.datas[app.globalData.subscript].singername
+    if (typeof this.getTabBar === 'function' && this.getTabBar()) {
+      this.getTabBar().setData({
+        bottbfimgbtn: app.globalData.bottbfimgbtn,
+        singerName: app.globalData.name,
+        songName: app.globalData.songName,
+        bfbtn: app.globalData.bfbtn,
+        shouchangbtn: app.globalData.shouchangbtn
+      })
+    }
     // 播放音乐
     wx.playBackgroundAudio({
       dataUrl: app.globalData.mp3

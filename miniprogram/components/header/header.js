@@ -45,6 +45,16 @@ Component({
             app.globalData.bfbtn = true
             app.globalData.bottbfimgbtn = false
             app.globalData.name = data.data.singerName
+            if (typeof _this.getTabBar === 'function' &&
+              _this.getTabBar()) {
+              _this.getTabBar().setData({
+                bottbfimgbtn: app.globalData.bottbfimgbtn,
+                singerName: app.globalData.name,
+                songName: app.globalData.songName,
+                bfbtn: app.globalData.bfbtn,
+                shouchangbtn: app.globalData.shouchangbtn
+              })
+            }
             // 播放音乐
             wx.playBackgroundAudio({
               dataUrl: app.globalData.mp3

@@ -8,13 +8,13 @@
     <image class="bfpagetopbigimg"></image>
     <view class="Play-song-name" style="color:{{colors}};" bindtap="watchBack">{{songName}}</view>
     <view class="Play-singer">{{singerName}}</view>
-    <view class="Play-Lyric">初见便是初念，这杯酒，叫做初念</view>
+    <view class="Play-Lyric">初见便是初念，这首歌，叫做初念</view>
     <image wx:if="{{shouchangbtn}}" class="Play-heart" bindtap="collection" src="../../../images/shouchang.png"></image>
     <image wx:else class="Play-heart" bindtap="deltmymu" src="../../../images/shouchangset.png"></image>
     <image class="sharing" bindtap="sharing" src="../../../images/fenxiangm.png"></image>
     <view class="gotobox">
       <image class="left" src="../../../images/shangyiqu.png" bindtap="lastSong"></image>
-      <image wx:if="{{bfbtn}}" class="centen" src="../../../images/bofangbtn.png" bindtap="boyy"></image>
+      <image wx:if="{{bottbfimgbtn}}" class="centen" src="../../../images/bofangbtn.png" bindtap="boyy"></image>
       <image wx:else class="centen" src="../../../images/bofangzhongbtn.png" bindtap="stop"></image>
       <image class="right" src="../../../images/xiayiqu.png" bindtap="nextSong"></image>
     </view>
@@ -28,7 +28,7 @@
 </block>
 <image wx:if="{{bfbtn?bottbfimgbtn:false}}" bindtap="boyy" class="bottztbtn" src="../../../images/bofangbtn.png"></image>
 <image wx:elif="{{bfbtn}}" bindtap="stop" class="bottztbtn" src="../../../images/bofangzhongbtn.png"></image>
-<cover-view class="tabBarbox" style="background:{{back}};" wx:if="{{tabbarkg}}">
+<cover-view class="tabBarbox" style="background:{{back}};" wx:hidden="{{tabbarkg}}">
   <cover-view class="intabBarbox" bindtap="switchTab" wx:for="{{list}}" wx:key="index" data-index="{{index}}" data-path="{{item.pagePath}}">
     <cover-image class="intabBarimg" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
     <cover-view class="intabBartext" style="color:{{selected == index ? colors : boxcolor}};">{{item.text}}</cover-view>

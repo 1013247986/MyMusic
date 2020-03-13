@@ -43,8 +43,8 @@ Page({
         console.log(err)
       })
   },
+  //跳转详情页
   gobtn(el) {
-    console.log(el.currentTarget.dataset.text)
     wx.navigateTo({
       url: `/pages/details/details?id=${el.currentTarget.dataset.text}`
     })
@@ -68,6 +68,16 @@ Page({
           app.globalData.bfbtn = true
           app.globalData.bottbfimgbtn = false
           app.globalData.name = data.data.singerName
+          if (typeof this.getTabBar === 'function' &&
+            this.getTabBar()) {
+            this.getTabBar().setData({
+              bottbfimgbtn: app.globalData.bottbfimgbtn,
+              singerName: app.globalData.name,
+              songName: app.globalData.songName,
+              bfbtn: app.globalData.bfbtn,
+              shouchangbtn: app.globalData.shouchangbtn
+            })
+          }
           // 播放音乐
           wx.playBackgroundAudio({
             dataUrl: app.globalData.mp3
