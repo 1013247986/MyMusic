@@ -1,0 +1,86 @@
+.detailsbox {
+  background: #0d0b21;
+  height: 100%;
+  position: relative;
+  overflow: scroll;
+}
+
+.return {
+  display: inline-block;
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 6rpx #f9faf5 solid;
+  border-left: 6rpx #f9faf5 solid;
+  position: absolute;
+  top: 20rpx;
+  left: 35rpx;
+  transform: rotateZ(-45deg);
+}
+
+.toptext {
+  color: #f9faf5;
+  font-size: 32rpx;
+  font-weight: 900;
+  text-align: center;
+  text-shadow: 0 0 6rpx #12b7f5;
+  letter-spacing: 2rpx;
+}
+
+.toptextpb {
+  color: #f9faf5;
+  font-size: 28rpx;
+  font-weight: 900;
+  letter-spacing: 2rpx;
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+}
+
+.indetailsbox {
+  background: #0d0b21;
+  margin-top: 40rpx;
+  overflow: scroll;
+}
+
+.inbox {
+  padding: 10rpx 40rpx;
+  position: relative;
+  border: 1px solid transparent;
+}
+.boxinimg{
+  width: 110rpx;
+  height: 110rpx;
+  border: 1px solid #F9FAF5;
+  box-shadow: 0 0 10rpx #12B7F5 inset;
+  border-radius: 12rpx;
+  margin-right: 26rpx;
+}
+.boxintoptext{
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 15rpx;
+  font-size: 30rpx;
+  letter-spacing: 2rpx;
+}
+.boxintopname{
+  display: inline-block;
+  color: rgb(129, 125, 125);
+  font-size: 26rpx;
+  position: absolute;
+  bottom: 20rpx;
+  left: 180rpx;
+  width: 60%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.boxintoprightbtn{
+   position: absolute;
+   right: 30rpx;
+   top: 40rpx;
+   height: 60rpx;
+   width: 60rpx;
+   border-radius: 50%;
+}
+.boxintoprightbtn:hover{
+   box-shadow: 0 0 10rpx #F9FAF5;
+}

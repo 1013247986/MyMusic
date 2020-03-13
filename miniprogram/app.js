@@ -8,13 +8,18 @@ App({
     username: undefined, //用户名
     usertopimg: '',// 用户头像地址
     indexs: 0,
-    inopenid: '',
     geid: '',
     zsyheight: "",
-    height: '',
-    mp3: "https://sharefs.yun.kugou.com/202003111947/c3a104174cc9b7719d765e2ddf5a4042/G123/M02/1C/19/W5QEAFr1dc-AAv0VADIRiNt3trs401.mp3",
-    name: "街道办GDC、欧阳耀莹",
-    songName: "春娇与志明" 
+    height: '', 
+    shouchangbtn: true, // 收藏开关
+    bottbfimgbtn: true,//底部播放暂停图标btn
+    mp3: undefined, //音乐链接
+    name: undefined, //歌名
+    songName: undefined, // 唱歌的人
+    bfbtn:false, //下方显示状态
+    datas:{},
+    subscript:0,
+    leng:"" // 数据多少
   },
   // 这里这么写，是要在其他界面监听，而不是在app.js中监听，而且这个监听方法，需要一个回调方法。
   watch: function (method) {
@@ -24,12 +29,10 @@ App({
       enumerable: true,
       set: function (value) {
         this._name = value;
-        console.log('是否会被执行2')
         method(value);
       },
       get: function () {
-        console.log(1)
-        // 可以在这里打印一些东西，然后在其他界面调用getApp().globalData.name的时候，这里就会执行。
+        // 在其他界面调用getApp().globalData.name的时候，这里就会执行。
         return this._name
       }
     })
@@ -44,12 +47,6 @@ App({
         traceUser: true,
       })
     }
-    wx.login({
-      success: (res) => {
-        this.globalData.inopenid = res.code
-        console.log(this.globalData.inopenid)
-      }
-    })
     // 获取设备顶部窗口的高度
     wx.getSystemInfo({
       success: (res) => {

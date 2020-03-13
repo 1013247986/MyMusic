@@ -22,14 +22,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // getAjax("http://msearchcdn.kugou.com/api/v3/search/song?showtype=14&highlight=em&pagesize=30&tag_aggr=1&tagtype=全部&plat=0&sver=5&keyword=春娇与志明&correct=1&api_ver=1&version=9108&page=1&area_code=1&tag=1&with_res_tag=1", {})
+    // getAjax("http://m.kugou.com/plist/list/2095384?json=true", {})
     //   .then(data => {
-    //     let text = JSON.parse(data.data.replace(/<!--KG_TAG_RES_END-->|<!--KG_TAG_RES_START-->|<em>|<\\\/em>/g, ""))
-    //     console.log(text.data.info)
+    //     console.log(data)
     //   }).catch(err => {
     //     console.log(err)
     //   })
-    // getAjax("http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=35492eb4b4bee97c6c9154e17d1ac3a6", {})
+    // getAjax("http://m.kugou.com/plist/index&json=true", {})
     //   .then(data => {
     //     console.log(data)
     //   }).catch(err => {
@@ -51,7 +50,12 @@ Page({
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 2
+        selected: 2,
+        bottbfimgbtn: app.globalData.bottbfimgbtn,
+        singerName: app.globalData.name,
+        songName: app.globalData.songName,
+        bfbtn: app.globalData.bfbtn,
+        shouchangbtn: app.globalData.shouchangbtn
       })
     }
   },

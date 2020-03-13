@@ -1,5 +1,6 @@
 .minebigbox {
   height: 100%;
+  overflow: scroll;
 }
 .minebigbox button{
   color: #F9FAF5;
@@ -25,6 +26,7 @@
 
 .likebox {
   box-sizing: border-box;
+  margin-bottom: 100rpx;
 }
 
 .likebox-top {
@@ -33,11 +35,11 @@
   line-height: 36rpx;
   box-sizing: border-box;
   padding: 0 30rpx;
-  margin: 20rpx 0rpx;
+  margin: 20rpx 0rpx 40rpx 0rpx;
 }
 
 .inlikebox {
-  padding: 20rpx 30rpx;
+  padding: 0rpx 30rpx 40rpx;
   position: relative;
 }
 .Songname{

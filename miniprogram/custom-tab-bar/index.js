@@ -1,5 +1,5 @@
 let app = getApp()
-import { addto } from "../public/public.js"
+import { addto , getAjax } from "../public/public.js"
 let _this = null
 Component({
   data: {
@@ -7,14 +7,14 @@ Component({
     colors: app.globalData.colors, //字体颜色
     boxcolor: app.globalData.boxcolor, // 盒子背景色
     heights: app.globalData.zsyheight, // 自适应高度
-    selected: 0, // 底部导航栏计算
-    bfbtn: true, // 底部播放提示开关
-    bottbfimgbtn: true, //底部播放暂停图标btn
+    animationData: '', //上拉动画
     tabbarkg: true, //底部tabbar开关
-    shouchangbtn: true, //收藏音乐开关
-    animationData: '',
-    singerName: app.globalData.name,
-    songName: app.globalData.songName,
+    selected: 0, // 底部导航栏计算
+    bfbtn: app.globalData.bfbtn, // 底部播放提示开关
+    bottbfimgbtn: app.globalData.bottbfimgbtn, //底部播放暂停图标btn
+    shouchangbtn: app.globalData.shouchangbtn, //收藏音乐开关
+    singerName: app.globalData.name, //唱歌的人
+    songName: app.globalData.songName,//歌名
     list: [
       {
         "pagePath": "/pages/home/home",
@@ -46,15 +46,16 @@ Component({
     attached: function () {
       _this = this
       getApp().watch(this.watchBack)
-      // 在组件实例进入页面节点树时执行
     }
   },
   methods: {
     watchBack: (name) => {
       _this.setData({
-        bottbfimgbtn:false,
-        singerName: name,
-        songName: app.globalData.songName
+        bottbfimgbtn: app.globalData.bottbfimgbtn,
+        singerName: app.globalData.name,
+        songName: app.globalData.songName,
+        bfbtn: app.globalData.bfbtn,
+        shouchangbtn: app.globalData.shouchangbtn
       })
     },
     switchTab(e) {
@@ -65,12 +66,87 @@ Component({
         selected: data.index
       })
     },
+    // 上一曲事件
+    lastSong(){
+      if (app.globalData.subscript==0){
+        app.globalData.subscript = app.globalData.leng - 1
+      }else{
+        app.globalData.subscript = app.globalData.subscript - 1
+      }
+      getAjax(`http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=${app.globalData.datas[app.globalData.subscript].hash}`, {})
+        .then(data => {
+          let _this = this
+          if (data.data.error == "需要付费") {
+            wx.showToast({
+              title: '付费音乐'
+            })
+          } else {
+            app.globalData.mp3 = data.data.url
+            app.globalData.songName = data.data.songName
+            app.globalData.shouchangbtn = true
+            app.globalData.bfbtn = true
+            app.globalData.bottbfimgbtn = false
+            app.globalData.name = data.data.singerName
+            _this.setData({
+              bottbfimgbtn: app.globalData.bottbfimgbtn,
+              singerName: app.globalData.name,
+              songName: app.globalData.songName,
+              bfbtn: app.globalData.bfbtn,
+              shouchangbtn: app.globalData.shouchangbtn
+            })
+            // 播放音乐
+            wx.playBackgroundAudio({
+              dataUrl: app.globalData.mp3
+            })
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+    },
+    // 下一曲事件
+    nextSong(){
+      if (app.globalData.subscript == app.globalData.leng - 1) {
+        app.globalData.subscript = 0
+      } else {
+        app.globalData.subscript = app.globalData.subscript + 1
+      }
+      getAjax(`http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=${app.globalData.datas[app.globalData.subscript].hash}`, {})
+        .then(data => {
+          let _this = this
+          if (data.data.error == "需要付费") {
+            wx.showToast({
+              title: '付费音乐'
+            })
+          } else {
+            app.globalData.mp3 = data.data.url
+            app.globalData.songName = data.data.songName
+            app.globalData.shouchangbtn = true
+            app.globalData.bfbtn = false
+            app.globalData.bottbfimgbtn = false
+            app.globalData.name = data.data.singerName
+            _this.setData({
+              bottbfimgbtn: app.globalData.bottbfimgbtn,
+              singerName: app.globalData.name,
+              songName: app.globalData.songName,
+              bfbtn: app.globalData.bfbtn,
+              shouchangbtn: app.globalData.shouchangbtn
+            })
+            // 播放音乐
+            wx.playBackgroundAudio({
+              dataUrl: app.globalData.mp3
+            })
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+    },
     // 播放音乐
-    boyy() {
-      console.log(this.data.singerName)
-      console.log(app.globalData.name)
+    boyy(){
+      app.globalData.bottbfimgbtn = false
+      app.globalData.bfbtn = false
       this.setData({
-        bottbfimgbtn: !this.data.bottbfimgbtn
+        bottbfimgbtn: app.globalData.bottbfimgbtn,
+        bfbtn: app.globalData.bfbtn
       })
       wx.playBackgroundAudio({
         dataUrl: app.globalData.mp3
@@ -78,8 +154,11 @@ Component({
     },
     // 暂停音乐
     stop() {
+      app.globalData.bfbtn = true
+      app.globalData.bottbfimgbtn = true
       this.setData({
-        bottbfimgbtn: !this.data.bottbfimgbtn
+        bfbtn: app.globalData.bfbtn,
+        bottbfimgbtn: app.globalData.bottbfimgbtn
       })
       wx.pauseBackgroundAudio()
     },
@@ -119,6 +198,39 @@ Component({
         animationData: animation.export()   //输出动画
       })
     },
+    // 分享好听的歌
+    sharing(){
+      if (app.globalData.username == undefined) {
+        wx.showToast({
+          title: '请先登录账号'
+        })
+        setTimeout(function () {
+          wx.switchTab({
+            url: '/pages/mine/mine'
+          });
+        }, 1000)
+      } else {
+        // 分享音乐
+        addto('sharingMusic', {
+          Source: "酷狗音乐",
+          musicname: app.globalData.name,
+          singername: app.globalData.songName,
+          username: app.globalData.username,
+          mp3: app.globalData.mp3,
+          userimg: app.globalData.usertopimg,
+          shouchang: true
+        }).then(data => {
+          app.globalData.geid = data._id
+          wx.showToast({
+            title: '分享成功',
+          })
+        }).catch(err => {
+          wx.showToast({
+            title: '分享失败',
+          })
+        })
+      }
+    },
     // 收藏我喜欢的歌
     collection() {
       if (app.globalData.username == undefined) {
@@ -136,10 +248,13 @@ Component({
         })
         // 添加我的收藏
         addto('myLikeMusic', {
-          Source: "网易云音乐",
-          musicname: "忘情水",
-          singername: "刘先生",
-          username: app.globalData.username
+          Source: "酷狗音乐",
+          musicname: app.globalData.name,
+          singername: app.globalData.songName,
+          username: app.globalData.username,
+          mp3: app.globalData.mp3,
+          userimg: app.globalData.usertopimg,
+          shouchang: true
         }).then(data => {
           app.globalData.geid = data._id
           wx.showToast({
@@ -152,7 +267,6 @@ Component({
         })
       }
     },
-
     deltmymu() {
       if (app.globalData.username == undefined) {
         wx.showToast({

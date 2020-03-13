@@ -1,7 +1,5 @@
-page {
-  height: 100%;
-}
 
 .karSongbox {
   height: 100%;
+  overflow: scroll;
 }

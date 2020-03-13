@@ -1,3 +1,7 @@
+tab-bar{
+  position: fixed;
+  bottom: 0px;
+}
 .intabBarbox {
   display: inline-block;
   width: 25%;
@@ -40,8 +44,29 @@
   line-height: 28rpx;
   position: relative;
   bottom: 25rpx;
+  display: inline-block;
+  width: 200rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
+.gotobox{
+  margin: 50rpx 30rpx;
+}
+.gotobox .left{
+  width: 60rpx;
+  height: 45rpx;
+  margin-left:90rpx; 
+}
+.gotobox .centen{
+  width: 45rpx;
+  height: 45rpx;
+  margin: 0 100rpx;
+}
+.gotobox .right{
+  width: 60rpx;
+  height: 45rpx;
+}
 .bottztbtn {
   float: right;
   width: 60rpx;
@@ -119,7 +144,14 @@
   height: 50rpx;
   position: absolute;
   right: 72rpx;
-  top: 810rpx;
+  top: 780rpx;
+}
+.sharing{
+  width: 50rpx;
+  height: 50rpx;
+  position: absolute;
+  right: 72rpx;
+  top: 870rpx;
 }
 @keyframes headRotate {
   0% {

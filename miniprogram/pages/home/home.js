@@ -1,5 +1,5 @@
 var app = getApp()
-import { obtain } from "../../public/public.js"
+import { obtain, getAjax } from "../../public/public.js"
 Page({
   data: {
     back: app.globalData.back, //背景色
@@ -12,7 +12,8 @@ Page({
     // 此页面 页面内容距最顶部的距离
     height: app.globalData.height * 2 + 62,
     rotationChart: {},
-    classimg:{}
+    classimg: {},
+    datas: {}
   },
   onLoad: function () {
     obtain('Rotation-chart')
@@ -33,7 +34,50 @@ Page({
       .catch(err => {
         console.log(err)
       })
+    getAjax("http://m.kugou.com/?json=true", {})
+      .then(data => {
+        this.setData({
+          datas: data.data.data.splice(0, 20)
+        })
+      }).catch(err => {
+        console.log(err)
+      })
   },
+  gobtn(el) {
+    console.log(el.currentTarget.dataset.text)
+    wx.navigateTo({
+      url: `/pages/details/details?id=${el.currentTarget.dataset.text}`
+    })
+  },
+  // 点击今日推荐
+  djbf(el) {
+    app.globalData.datas = this.data.datas
+    app.globalData.leng = app.globalData.datas.length
+    app.globalData.subscript = el.currentTarget.dataset.subscript
+    getAjax(`http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=${app.globalData.datas[app.globalData.subscript].hash}`, {})
+      .then(data => {
+        let _this = this
+        if (data.data.error == "需要付费") {
+          wx.showToast({
+            title: '付费音乐'
+          })
+        } else {
+          app.globalData.mp3 = data.data.url
+          app.globalData.songName = data.data.songName
+          app.globalData.shouchangbtn = true
+          app.globalData.bfbtn = true
+          app.globalData.bottbfimgbtn = false
+          app.globalData.name = data.data.singerName
+          // 播放音乐
+          wx.playBackgroundAudio({
+            dataUrl: app.globalData.mp3
+          })
+        }
+      }).catch(err => {
+        console.log(err)
+      })
+  }
+  ,
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -48,43 +92,13 @@ Page({
     if (typeof this.getTabBar === 'function' &&
       this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 0
+        selected: 0,
+        bottbfimgbtn: app.globalData.bottbfimgbtn,
+        singerName: app.globalData.name,
+        songName: app.globalData.songName,
+        bfbtn: app.globalData.bfbtn,
+        shouchangbtn: app.globalData.shouchangbtn
       })
     }
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

@@ -9,23 +9,23 @@
   </swiper>
   <view class="homecenterbox ">
     <block wx:for="{{classimg}}" wx:key="index">
-      <view class="inhomecenterbox ">
-        <image src="{{item.img}}"></image>
+      <view class="inhomecenterbox" bindtap="gobtn" data-text="{{item.num}}">
+        <image src="{{item.img}}"  data-text="{{item.num}}"></image>
         <text style="color:{{colors}};">{{item.text}}</text>
       </view>
     </block>
   </view>
-  <view class="homeRecommend ">
+  <view class="homeRecommend">
     <text class="left " style="color:{{colors}}; ">今日推荐</text>
     <view class="right " style="color:{{colors}}; ">更多
       <text class="rightbtn "></text>
     </view>
   </view>
-  <view class="homeRecommendBox ">
-    <view class="homeRecommendInBox ">
+  <view class="homeRecommendBox" style="background: {{back}};">
+    <view class="homeRecommendInBox" wx:for="{{datas}}" wx:key="index" data-hash="{{item.hash}}" bindtap="djbf" data-subscript="{{index}}">
       <image class="boxinimg "></image>
-      <view class="boxintoptext " style="color:{{colors}}; ">春娇与志明</view>\n
-      <view class="boxintopname ">街道办GDC/欧阳耀莹</view>
+      <view class="boxintoptext " style="color:{{colors}}; ">{{item.remark}}</view>\n
+      <view class="boxintopname ">{{item.filename}}</view>
       <image class="boxintoprightbtn " src="../../images/bofangbtn.png "></image>
     </view>
   </view>

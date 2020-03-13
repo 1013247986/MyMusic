@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/mine/mine",
     "pages/share/share",
-    "pages/karlSong/karlSong"
+    "pages/karlSong/karlSong",
+    "pages/details/details"
   ],
   "requiredBackgroundModes": ["audio"],
   "window": {

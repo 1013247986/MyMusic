@@ -16,7 +16,6 @@ Page({
     myLikeMusic: null,
     musicnum: 0
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -26,7 +25,20 @@ Page({
       username: app.globalData.username
     })
   },
-
+  scbfbtn(el) {
+    let data = el.currentTarget.dataset.shuju
+    console.log(data)
+    app.globalData.songName = data.musicname
+    app.globalData.mp3 = data.mp3
+    app.globalData.shouchangbtn = false
+    app.globalData.bfbtn = true
+    app.globalData.bottbfimgbtn = false
+    app.globalData.name = data.singername
+    // 播放音乐
+    wx.playBackgroundAudio({
+      dataUrl: app.globalData.mp3
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -38,11 +50,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // 每次显示页面都刷新一次
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({
-        selected: 3
+        selected: 3,
+        bottbfimgbtn: app.globalData.bottbfimgbtn,
+        singerName: app.globalData.name,
+        songName: app.globalData.songName,
+        bfbtn: app.globalData.bfbtn,
+        shouchangbtn: app.globalData.shouchangbtn
       })
     }
+    // 获取自己的歌
     obtain('myLikeMusic', app.globalData.username)
       .then(data => {
         this.setData({
@@ -71,39 +90,5 @@ Page({
         title: '获取信息失败'
       })
     }
-  },
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

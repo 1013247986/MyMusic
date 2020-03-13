@@ -1,40 +1,19 @@
 <nav-bar navbar-data='{{nvabarData}}'></nav-bar>
 <view class="sharebigbox" style="background: {{back}};margin-top:{{height}}px">
   <view class="share-top">
-    <view class="user-box" style="background:{{boxcolor}}">
-      <view class="userimg"></view>
-      <view class="username" style="color:{{colors}};">{{username}}</view>
-    </view>
-    <view class="user-box" style="background:{{boxcolor}}">
-      <view class="userimg"></view>
-      <view class="username" style="color:{{colors}};">{{username}}</view>
-    </view>
-    <view class="user-box" style="background:{{boxcolor}}">
-      <view class="userimg"></view>
-      <view class="username" style="color:{{colors}};">{{username}}</view>
-    </view>
-    <view class="user-box" style="background:{{boxcolor}}">
-      <view class="userimg"></view>
-      <view class="username" style="color:{{colors}};">{{username}}</view>
-    </view>
-    <view class="user-box" style="background:{{boxcolor}}">
-      <view class="userimg"></view>
-      <view class="username" style="color:{{colors}};">{{username}}</view>
-    </view>
-    <view class="user-box" style="background:{{boxcolor}}">
-      <view class="userimg"></view>
-      <view class="username" style="color:{{colors}};">{{username}}</view>
-    </view>
+      <view class="username" style="color:{{colors}};background:{{boxcolor}};" bindtap="hqname" data-name="细嗅蔷薇">细嗅蔷薇</view>
   </view>
   <view class="share-center">
-     <text class="share-center-text" style="color:{{colors}};">极致音乐,与你共享</text>
+    <text class="share-center-text" style="color:{{colors}};">极致音乐,与你共享</text>
   </view>
-  <view class="share-bottom">
-    <view class="music-title" style="color:{{colors}};">{{music}}</view>
-    <view class="user-comment" style="color:{{colors}};">{{userComment}}</view>
-    <view class="user-message">
-      <view class="userimg"></view>
-      <view class="username" style="color:{{colors}};">{{username}}</view>
+  <block wx:for="{{musicdata}}" wx:key="index">
+    <view class="share-bottom">
+      <view class="music-title" style="color:{{colors}};">{{item.musicname}}</view>
+      <view class="user-comment" style="color:{{colors}};">{{item.singername}}</view>
+      <view class="user-message">
+        <image class="userimg" src="{{item.userimg}}"></image>
+        <view class="username">{{item.username}}</view>
+      </view>
     </view>
-  </view>
+  </block>
 </view>

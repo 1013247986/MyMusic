@@ -11,6 +11,13 @@
     <view class="Play-Lyric">初见便是初念，这杯酒，叫做初念</view>
     <image wx:if="{{shouchangbtn}}" class="Play-heart" bindtap="collection" src="../../../images/shouchang.png"></image>
     <image wx:else class="Play-heart" bindtap="deltmymu" src="../../../images/shouchangset.png"></image>
+    <image class="sharing" bindtap="sharing" src="../../../images/fenxiangm.png"></image>
+    <view class="gotobox">
+      <image class="left" src="../../../images/shangyiqu.png" bindtap="lastSong"></image>
+      <image wx:if="{{bfbtn}}" class="centen" src="../../../images/bofangbtn.png" bindtap="boyy"></image>
+      <image wx:else class="centen" src="../../../images/bofangzhongbtn.png" bindtap="stop"></image>
+      <image class="right" src="../../../images/xiayiqu.png" bindtap="nextSong"></image>
+    </view>
   </view>
 </block>
 <block wx:if="{{bfbtn}}">

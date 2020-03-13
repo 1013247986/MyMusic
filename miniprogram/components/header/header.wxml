@@ -3,7 +3,7 @@
   <!--  导航栏 中间的标题 -->
   <view class='nav-title' style='line-height: {{height*2 + 25}}px;'>{{navbarData.title}}</view>
   <view class="yitiaoxian">
-    <input type="text" class="search" placeholder="搜索" focus="ture" bindinput="inputsj">
+    <input type="text" class="search" placeholder="搜索" value="{{invalue}}" focus="ture" bindinput="inputsj">
     <image src="../../images/sousuo.png"></image>
     </input>
   </view>
