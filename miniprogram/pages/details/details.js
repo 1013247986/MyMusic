@@ -12,7 +12,8 @@ Page({
     toptext:"", // 头部标题
     datas:{}, //数据
     indexs:null,
-    zdyheight: ''
+    zdyheight: '',
+    num:""
   },
 
   /**
@@ -27,8 +28,10 @@ Page({
       .then(data => {
         _this.setData({
           toptext: data.data.info.list.specialname,
-          datas: data.data.list.list.info
+          datas: data.data.list.list.info,
+          num: data.data.list.list.info.length
         })
+        console.log(data.data.list)
       }).catch(err => {
         console.log(err)
       })
@@ -38,10 +41,15 @@ Page({
       delta: 1
     })
   },
+  // 点击歌曲播放
   bfhash(el){
+    app.globalData.subscript = el.currentTarget.dataset.index
+    app.globalData.datas = this.data.datas
+    app.globalData.leng = this.data.num
     this.setData({
       indexs: el.currentTarget.dataset.index
     })
+    console.log(el.currentTarget.dataset.hash)
     getAjax(`http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=${el.currentTarget.dataset.hash}`, {})
       .then(data => {
         let _this = this
@@ -50,12 +58,15 @@ Page({
             title: '付费音乐'
           })
         } else {
+          app.globalData.imglj = data.data.album_img.replace(/\/{size}/, "")
           app.globalData.mp3 = data.data.url
           app.globalData.songName = data.data.songName
           app.globalData.shouchangbtn = true
           app.globalData.bfbtn = true
           app.globalData.bottbfimgbtn = false
           app.globalData.name = data.data.singerName
+          console.log(data)
+          console.log(data.data.url)
           // 播放音乐
           wx.playBackgroundAudio({
             dataUrl: app.globalData.mp3

@@ -19,7 +19,8 @@ App({
     bfbtn:false, //下方显示状态
     datas:{},
     subscript:0,
-    leng:"" // 数据多少
+    leng:"",// 数据多少
+    imglj:""
   },
   // 这里这么写，是要在其他界面监听，而不是在app.js中监听，而且这个监听方法，需要一个回调方法。
   watch: function (method) {

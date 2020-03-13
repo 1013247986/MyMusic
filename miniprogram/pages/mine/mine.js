@@ -31,6 +31,7 @@ Page({
     app.globalData.subscript = el.currentTarget.dataset.num
     app.globalData.songName = app.globalData.datas[app.globalData.subscript].musicname
     app.globalData.mp3 = app.globalData.datas[app.globalData.subscript].hash
+    app.globalData.imglj = app.globalData.datas[app.globalData.subscript].imglj
     app.globalData.shouchangbtn = false
     app.globalData.bfbtn = true
     app.globalData.bottbfimgbtn = false
@@ -41,7 +42,8 @@ Page({
         singerName: app.globalData.name,
         songName: app.globalData.songName,
         bfbtn: app.globalData.bfbtn,
-        shouchangbtn: app.globalData.shouchangbtn
+        shouchangbtn: app.globalData.shouchangbtn,
+        imglj: app.globalData.imglj
       })
     }
     // 播放音乐
@@ -68,7 +70,8 @@ Page({
         singerName: app.globalData.name,
         songName: app.globalData.songName,
         bfbtn: app.globalData.bfbtn,
-        shouchangbtn: app.globalData.shouchangbtn
+        shouchangbtn: app.globalData.shouchangbtn,
+        imglj: app.globalData.imglj
       })
     }
     // 获取自己的歌
@@ -84,7 +87,6 @@ Page({
       })
   },
   bindGetUserInfo: function (e) {
-    console.log(e.detail.userInfo)
     if (e.detail.userInfo) {
       wx.showToast({
         title: '获取信息成功'

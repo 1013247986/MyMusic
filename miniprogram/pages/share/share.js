@@ -55,7 +55,8 @@ Page({
         singerName: app.globalData.name,
         songName: app.globalData.songName,
         bfbtn: app.globalData.bfbtn,
-        shouchangbtn: app.globalData.shouchangbtn
+        shouchangbtn: app.globalData.shouchangbtn,
+        imglj: app.globalData.imglj
       })
     }
     // 获取分享的歌

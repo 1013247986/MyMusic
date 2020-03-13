@@ -2,6 +2,7 @@
 <view class="sharebigbox" style="background: {{back}};margin-top:{{height}}px">
   <view class="share-top">
       <view class="username" style="color:{{colors}};background:{{boxcolor}};" bindtap="hqname" data-name="细嗅蔷薇">细嗅蔷薇</view>
+      <view class="username" style="color:{{colors}};background:{{boxcolor}};" bindtap="hqname" data-name="1998">1998</view>
   </view>
   <view class="share-center">
     <text class="share-center-text" style="color:{{colors}};">极致音乐,与你共享</text>

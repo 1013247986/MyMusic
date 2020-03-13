@@ -62,6 +62,7 @@ Page({
             title: '付费音乐'
           })
         } else {
+          app.globalData.imglj = data.data.album_img.replace(/\/{size}/, "")
           app.globalData.mp3 = data.data.url
           app.globalData.songName = data.data.songName
           app.globalData.shouchangbtn = true
@@ -75,7 +76,8 @@ Page({
               singerName: app.globalData.name,
               songName: app.globalData.songName,
               bfbtn: app.globalData.bfbtn,
-              shouchangbtn: app.globalData.shouchangbtn
+              shouchangbtn: app.globalData.shouchangbtn,
+              imglj:app.globalData.imglj
             })
           }
           // 播放音乐
@@ -107,7 +109,8 @@ Page({
         singerName: app.globalData.name,
         songName: app.globalData.songName,
         bfbtn: app.globalData.bfbtn,
-        shouchangbtn: app.globalData.shouchangbtn
+        shouchangbtn: app.globalData.shouchangbtn,
+        imglj: app.globalData.imglj
       })
     }
   }

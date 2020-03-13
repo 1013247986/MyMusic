@@ -15,6 +15,7 @@ Component({
     shouchangbtn: app.globalData.shouchangbtn, //收藏音乐开关
     singerName: app.globalData.name, //唱歌的人
     songName: app.globalData.songName,//歌名
+    imglj: '',
     list: [
       {
         "pagePath": "/pages/home/home",
@@ -80,12 +81,14 @@ Component({
         app.globalData.bfbtn = true
         app.globalData.bottbfimgbtn = false
         app.globalData.name = app.globalData.datas[app.globalData.subscript].singername
+        app.globalData.imglj = app.globalData.datas[app.globalData.subscript].imglj
         this.setData({
           bottbfimgbtn: app.globalData.bottbfimgbtn,
           singerName: app.globalData.name,
           songName: app.globalData.songName,
           bfbtn: app.globalData.bfbtn,
-          shouchangbtn: app.globalData.shouchangbtn
+          shouchangbtn: app.globalData.shouchangbtn,
+          imglj: app.globalData.imglj
         })
         // 播放音乐
         wx.playBackgroundAudio({
@@ -100,6 +103,7 @@ Component({
                 title: '付费音乐'
               })
             } else {
+              app.globalData.imglj = data.data.album_img.replace(/\/{size}/, "")
               app.globalData.mp3 = data.data.url
               app.globalData.songName = data.data.songName
               app.globalData.shouchangbtn = true
@@ -111,7 +115,8 @@ Component({
                 singerName: app.globalData.name,
                 songName: app.globalData.songName,
                 bfbtn: app.globalData.bfbtn,
-                shouchangbtn: app.globalData.shouchangbtn
+                shouchangbtn: app.globalData.shouchangbtn,
+                imglj:app.globalData.imglj
               })
               // 播放音乐
               wx.playBackgroundAudio({
@@ -137,12 +142,14 @@ Component({
         app.globalData.bfbtn = true
         app.globalData.bottbfimgbtn = false
         app.globalData.name = app.globalData.datas[app.globalData.subscript].singername
+        app.globalData.imglj = app.globalData.datas[app.globalData.subscript].imglj
         this.setData({
           bottbfimgbtn: app.globalData.bottbfimgbtn,
           singerName: app.globalData.name,
           songName: app.globalData.songName,
           bfbtn: app.globalData.bfbtn,
-          shouchangbtn: app.globalData.shouchangbtn
+          shouchangbtn: app.globalData.shouchangbtn,
+          imglj: app.globalData.imglj
         })
         // 播放音乐
         wx.playBackgroundAudio({
@@ -157,6 +164,7 @@ Component({
                 title: '付费音乐'
               })
             } else {
+              app.globalData.imglj = data.data.album_img.replace(/\/{size}/, "")
               app.globalData.mp3 = data.data.url
               app.globalData.songName = data.data.songName
               app.globalData.shouchangbtn = true
@@ -168,7 +176,8 @@ Component({
                 singerName: app.globalData.name,
                 songName: app.globalData.songName,
                 bfbtn: app.globalData.bfbtn,
-                shouchangbtn: app.globalData.shouchangbtn
+                shouchangbtn: app.globalData.shouchangbtn,
+                imglj: app.globalData.imglj
               })
               // 播放音乐
               wx.playBackgroundAudio({
@@ -258,7 +267,8 @@ Component({
           username: app.globalData.username,
           hash: app.globalData.mp3,
           userimg: app.globalData.usertopimg,
-          shouchang: true
+          shouchang: true,
+          imglj:app.globalData.imglj
         }).then(data => {
           app.globalData.geid = data._id
           wx.showToast({
@@ -294,7 +304,8 @@ Component({
           username: app.globalData.username,
           hash: app.globalData.mp3,
           userimg: app.globalData.usertopimg,
-          shouchang: true
+          shouchang: true,
+          imglj: app.globalData.imglj
         }).then(data => {
           app.globalData.geid = data._id
           wx.showToast({
