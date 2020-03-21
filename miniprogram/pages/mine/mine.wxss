@@ -65,7 +65,5 @@
   width: 50rpx;
   border: 1px solid transparent;
   border-radius: 50%;
-}
-.inlikebox image:hover{
-  box-shadow: 0 0 10rpx #F9FAF5;
+  z-index: 5;
 }

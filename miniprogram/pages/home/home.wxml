@@ -18,14 +18,14 @@
   <view class="homeRecommend">
     <text class="left " style="color:{{colors}}; ">今日推荐</text>
     <view class="right " style="color:{{colors}}; ">更多
-      <text class="rightbtn "></text>
+      <text class="rightbtn"></text>
     </view>
   </view>
   <view class="homeRecommendBox" style="background: {{back}};">
-    <view class="homeRecommendInBox" wx:for="{{datas}}" wx:key="index" data-hash="{{item.hash}}" bindtap="djbf" data-subscript="{{index}}">
-      <image class="boxinimg "></image>
-      <view class="boxintoptext " style="color:{{colors}}; ">{{item.remark}}</view>\n
-      <view class="boxintopname ">{{item.filename}}</view>
+    <view class="homeRecommendInBox" wx:for="{{datas}}" wx:key="index" bindtap="djbf" data-subscript="{{index}}">
+      <image class="boxinimg" src="{{item.data.imglj}}"></image>
+      <view class="boxintoptext " style="color:{{colors}}; ">{{item.data.songname}}</view>\n
+      <view class="boxintopname ">{{item.data.singer[0].name}}</view>
       <image class="boxintoprightbtn " src="../../images/bofangbtn.png "></image>
     </view>
   </view>

@@ -6,29 +6,34 @@
       <text>歌手</text>
     </view>
     <image class="bfpagetopbigimg" src="{{imglj}}"></image>
-    <view class="Play-song-name" style="color:{{colors}};" bindtap="watchBack">{{songName}}</view>
+    <view class="Play-song-name" style="color:{{colors}};">{{songName}}</view>
     <view class="Play-singer">{{singerName}}</view>
     <view class="Play-Lyric">初见便是初念，这首歌，叫做初念</view>
     <image wx:if="{{shouchangbtn}}" class="Play-heart" bindtap="collection" src="../../../images/shouchang.png"></image>
     <image wx:else class="Play-heart" bindtap="deltmymu" src="../../../images/shouchangset.png"></image>
     <image class="sharing" bindtap="sharing" src="../../../images/fenxiangm.png"></image>
+    <!-- 播放暂停，上一曲下一曲按钮 -->
     <view class="gotobox">
       <image class="left" src="../../../images/shangyiqu.png" bindtap="lastSong"></image>
       <image wx:if="{{bottbfimgbtn}}" class="centen" src="../../../images/bofangbtn.png" bindtap="boyy"></image>
       <image wx:else class="centen" src="../../../images/bofangzhongbtn.png" bindtap="stop"></image>
       <image class="right" src="../../../images/xiayiqu.png" bindtap="nextSong"></image>
     </view>
+    <!-- 播放进度条 -->
+    <view class="progressBar" bindtap="changingSchedule" style="background-image: linear-gradient(to right, {{colors}} {{speedOfProgress}}rpx, {{boxcolor}} {{speedOfProgress}}rpx);"></view>
   </view>
 </block>
+<!-- 底部播放状态显示 -->
 <block wx:if="{{bfbtn}}">
   <view class="bfbtn" style="background:{{back}}" bindtap="shangla">
-    <image class="gimage" src="../../../images/bofangbtn.png"></image>
+    <image class="gimage" src="{{imglj}}"></image>
     <text style="color:{{colors}};">{{songName}}</text>
   </view>
 </block>
 <image wx:if="{{bfbtn?bottbfimgbtn:false}}" bindtap="boyy" class="bottztbtn" src="../../../images/bofangbtn.png"></image>
 <image wx:elif="{{bfbtn}}" bindtap="stop" class="bottztbtn" src="../../../images/bofangzhongbtn.png"></image>
 <cover-view class="tabBarbox" style="background:{{back}};" wx:hidden="{{tabbarkg}}">
+<cover-view class="topborder"></cover-view>
   <cover-view class="intabBarbox" bindtap="switchTab" wx:for="{{list}}" wx:key="index" data-index="{{index}}" data-path="{{item.pagePath}}">
     <cover-image class="intabBarimg" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></cover-image>
     <cover-view class="intabBartext" style="color:{{selected == index ? colors : boxcolor}};">{{item.text}}</cover-view>

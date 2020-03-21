@@ -4,7 +4,8 @@
     "pages/mine/mine",
     "pages/share/share",
     "pages/karlSong/karlSong",
-    "pages/details/details"
+    "pages/details/details",
+    "pages/loadimg/loadimg"
   ],
   "requiredBackgroundModes": ["audio"],
   "window": {

@@ -60,6 +60,10 @@
   margin-top: 15rpx;
   font-size: 30rpx;
   letter-spacing: 2rpx;
+  width: 420rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .boxintopname{
   display: inline-block;

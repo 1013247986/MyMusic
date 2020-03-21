@@ -1,6 +1,7 @@
 const app = getApp();
-import { getAjax } from "../../public/public.js"
-// pages/home/home.js
+import { toUpdate,speedOfProgress } from "../../Public-method/public.js"
+//  暂停定时器函数
+let stop = ""
 Page({
 
   /**
@@ -22,18 +23,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // getAjax("http://m.kugou.com/plist/list/2095384?json=true", {})
-    //   .then(data => {
-    //     console.log(data)
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
-    // getAjax("http://m.kugou.com/plist/index&json=true", {})
-    //   .then(data => {
-    //     console.log(data)
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
   },
 
   /**
@@ -47,24 +36,17 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 2,
-        bottbfimgbtn: app.globalData.bottbfimgbtn,
-        singerName: app.globalData.name,
-        songName: app.globalData.songName,
-        bfbtn: app.globalData.bfbtn,
-        shouchangbtn: app.globalData.shouchangbtn,
-        imglj: app.globalData.imglj
-      })
-    }
+    let _this = this
+    toUpdate(_this, 2)
+    stop = setInterval(function () {
+      speedOfProgress(_this)
+    }, 1000)
   },
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+      clearInterval(stop)
   },
 
   /**

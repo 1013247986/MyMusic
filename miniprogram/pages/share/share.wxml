@@ -7,14 +7,14 @@
   <view class="share-center">
     <text class="share-center-text" style="color:{{colors}};">极致音乐,与你共享</text>
   </view>
-  <block wx:for="{{musicdata}}" wx:key="index">
-    <view class="share-bottom">
-      <view class="music-title" style="color:{{colors}};">{{item.musicname}}</view>
-      <view class="user-comment" style="color:{{colors}};">{{item.singername}}</view>
+  <view wx:for="{{musicdata}}" wx:key="index" class="share-bottombigbox">
+    <view class="share-bottom" data-index="{{index}}" bindtap="shareList">
+      <view class="music-title" style="color:{{colors}};">{{item.singername}}</view>
+      <view class="user-comment" style="color:{{colors}};">{{item.musicname}}</view>
       <view class="user-message">
         <image class="userimg" src="{{item.userimg}}"></image>
         <view class="username">{{item.username}}</view>
       </view>
     </view>
-  </block>
+  </view>
 </view>

@@ -1,5 +1,6 @@
 var app = getApp()
-import { getAjax } from "../../public/public.js"
+import { getAjax ,goUpdate,updatepublic} from "../../Public-method/public.js"
+import { huoqu, hqimg} from "../../Public-data/public.js"
 Page({
   data: {
     back: app.globalData.back, //背景色
@@ -9,64 +10,66 @@ Page({
     nvabarData: {
       title: '极致音乐', //导航栏 中间的标题
     },
-    toptext:"", // 头部标题
-    datas:{}, //数据
-    indexs:null,
+    toptext: "", // 头部标题
+    datas: {}, //数据
+    indexs: null,
     zdyheight: '',
-    num:""
+    num: ""
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
       zdyheight: wx.getSystemInfoSync().windowHeight - this.data.height
-    })
+    })     // song_num等于获取多少条
+    let classroutr = `https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&=&topid=${options.id}&type=top&song_begin=0&song_num=30&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0`
     let _this = this
-    getAjax(`http://m.kugou.com/plist/list/${options.id}?json=true`, {})
+    getAjax(classroutr, {})
       .then(data => {
+        let indata = data.data
+        for (let i = 0; i < indata.songlist.length;i++){
+          indata.songlist[i].data.imglj = hqimg.replace(/liujie/,indata.songlist[i].data.albumid)
+        }
         _this.setData({
-          toptext: data.data.info.list.specialname,
-          datas: data.data.list.list.info,
-          num: data.data.list.list.info.length
+          toptext: indata.topinfo.ListName,
+          datas: indata.songlist,
+          num: indata.songlist.length
         })
-        console.log(data.data.list)
       }).catch(err => {
         console.log(err)
       })
   },
-  retures(){
+  retures() {
     wx.navigateBack({//返回
       delta: 1
     })
   },
   // 点击歌曲播放
-  bfhash(el){
-    app.globalData.subscript = el.currentTarget.dataset.index
-    app.globalData.datas = this.data.datas
-    app.globalData.leng = this.data.num
+  bfhash(el) {
+    let _this = this
     this.setData({
       indexs: el.currentTarget.dataset.index
     })
-    console.log(el.currentTarget.dataset.hash)
-    getAjax(`http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=${el.currentTarget.dataset.hash}`, {})
+    app.globalData.subscript = el.currentTarget.dataset.index
+    app.globalData.datas = this.data.datas
+    app.globalData.leng = this.data.num
+    let item = app.globalData.datas[app.globalData.subscript]
+    let huoquset = huoqu.replace(/liujie/, item.data.songmid)
+    let hqimgset = hqimg.replace(/liujie/, item.data.albumid)
+    getAjax(huoquset, {})
       .then(data => {
+        let indata = data.data.req_0.data
+        let mp3 = indata.sip[0] + indata.midurlinfo[0].purl
         let _this = this
-        if (data.data.error == "需要付费") {
+        if (indata.midurlinfo[0].purl == false) {
           wx.showToast({
             title: '付费音乐'
           })
         } else {
-          app.globalData.imglj = data.data.album_img.replace(/\/{size}/, "")
-          app.globalData.mp3 = data.data.url
-          app.globalData.songName = data.data.songName
-          app.globalData.shouchangbtn = true
-          app.globalData.bfbtn = true
-          app.globalData.bottbfimgbtn = false
-          app.globalData.name = data.data.singerName
-          console.log(data)
-          console.log(data.data.url)
+          app.globalData.hash = item.data.songmid
+          updatepublic(hqimgset, mp3, item)
+          goUpdate(_this)
           // 播放音乐
           wx.playBackgroundAudio({
             dataUrl: app.globalData.mp3
@@ -77,6 +80,5 @@ Page({
       })
   },
   onShow: function () {
-
   }
 })

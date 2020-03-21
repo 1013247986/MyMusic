@@ -1,12 +1,8 @@
-// pages/home/home.js
 const app = getApp();
-import { obtain } from "../../public/public.js"
+import { obtain, toUpdate, goUpdate, djbf, speedOfProgress } from "../../Public-method/public.js"
+//  暂停定时器函数
+let stop = ""
 Page({
-
-  /**
-   * 页面的初始数据
-   * 
-   */
   data: {
     back: app.globalData.back, //背景色
     colors: app.globalData.colors, //字体颜色
@@ -26,7 +22,7 @@ Page({
 
   },
   hqname(el){
-    // 获取分享的歌
+    // 点击名字获取分享的歌
     obtain('sharingMusic', el.currentTarget.dataset.name)
       .then(data => {
         this.setData({
@@ -37,28 +33,17 @@ Page({
         console.log(err)
       })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
+  shareList(el){
+    let _this = this
+    djbf(_this, el)
+    goUpdate(_this)
   },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 1,
-        bottbfimgbtn: app.globalData.bottbfimgbtn,
-        singerName: app.globalData.name,
-        songName: app.globalData.songName,
-        bfbtn: app.globalData.bfbtn,
-        shouchangbtn: app.globalData.shouchangbtn,
-        imglj: app.globalData.imglj
-      })
-    }
+    let _this = this
+    toUpdate(_this, 1)
     // 获取分享的歌
     obtain('sharingMusic')
       .then(data => {
@@ -69,5 +54,11 @@ Page({
       .catch(err => {
         console.log(err)
       })
+    stop = setInterval(function () {
+      speedOfProgress(_this)
+    }, 1000)
+  },
+  onHide: function () {
+    clearInterval(stop)
   }
 })

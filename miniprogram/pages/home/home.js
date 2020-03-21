@@ -1,5 +1,10 @@
 var app = getApp()
-import { obtain, getAjax } from "../../public/public.js"
+import { huoqu, hqimg } from "../../Public-data/public.js"
+import { obtain, getAjax, toUpdate, goUpdate, updatepublic, speedOfProgress } from "../../Public-method/public.js" 
+//  暂停定时器函数
+let stop = ""
+//song_num 等于获取数量
+let classroutr = "https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg?tpl=3&page=detail&=&topid=4&type=top&song_begin=0&song_num=30&g_tk=5381&loginUin=0&hostUin=0&format=json&inCharset=utf8&outCharset=utf-8&notice=0&platform=yqq.json&needNewCode=0 "
 Page({
   data: {
     back: app.globalData.back, //背景色
@@ -34,10 +39,14 @@ Page({
       .catch(err => {
         console.log(err)
       })
-    getAjax("http://m.kugou.com/?json=true", {})
+    getAjax(classroutr, {})
       .then(data => {
+        let indata = data.data
+        for (let i = 0; i < indata.songlist.length; i++) {
+          indata.songlist[i].data.imglj = hqimg.replace(/liujie/, indata.songlist[i].data.albumid)
+        }
         this.setData({
-          datas: data.data.data.splice(0, 20)
+          datas: indata.songlist
         })
       }).catch(err => {
         console.log(err)
@@ -51,35 +60,26 @@ Page({
   },
   // 点击今日推荐
   djbf(el) {
+    let _this = this
     app.globalData.datas = this.data.datas
     app.globalData.leng = app.globalData.datas.length
     app.globalData.subscript = el.currentTarget.dataset.subscript
-    getAjax(`http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=${app.globalData.datas[app.globalData.subscript].hash}`, {})
+    let item = app.globalData.datas[app.globalData.subscript]
+    let huoquset = huoqu.replace(/liujie/, item.data.songmid)
+    let hqimgset = hqimg.replace(/liujie/, item.data.albumid)
+    getAjax(huoquset, {})
       .then(data => {
+        let indata = data.data.req_0.data
+        let mp3 = indata.sip[0] + indata.midurlinfo[0].purl
         let _this = this
-        if (data.data.error == "需要付费") {
+        if (indata.midurlinfo[0].purl == false) {
           wx.showToast({
             title: '付费音乐'
           })
         } else {
-          app.globalData.imglj = data.data.album_img.replace(/\/{size}/, "")
-          app.globalData.mp3 = data.data.url
-          app.globalData.songName = data.data.songName
-          app.globalData.shouchangbtn = true
-          app.globalData.bfbtn = true
-          app.globalData.bottbfimgbtn = false
-          app.globalData.name = data.data.singerName
-          if (typeof this.getTabBar === 'function' &&
-            this.getTabBar()) {
-            this.getTabBar().setData({
-              bottbfimgbtn: app.globalData.bottbfimgbtn,
-              singerName: app.globalData.name,
-              songName: app.globalData.songName,
-              bfbtn: app.globalData.bfbtn,
-              shouchangbtn: app.globalData.shouchangbtn,
-              imglj:app.globalData.imglj
-            })
-          }
+          app.globalData.hash = item.data.songmid
+          updatepublic(hqimgset, mp3, item)
+          goUpdate(_this)
           // 播放音乐
           wx.playBackgroundAudio({
             dataUrl: app.globalData.mp3
@@ -88,30 +88,30 @@ Page({
       }).catch(err => {
         console.log(err)
       })
-  }
-  ,
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
   },
-
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if (typeof this.getTabBar === 'function' &&
-      this.getTabBar()) {
-      this.getTabBar().setData({
-        selected: 0,
-        bottbfimgbtn: app.globalData.bottbfimgbtn,
-        singerName: app.globalData.name,
-        songName: app.globalData.songName,
-        bfbtn: app.globalData.bfbtn,
-        shouchangbtn: app.globalData.shouchangbtn,
-        imglj: app.globalData.imglj
+    let _this = this
+    toUpdate(_this, 0)
+    getAjax(classroutr, {})
+      .then(data => {
+        let indata = data.data
+        for (let i = 0; i < indata.songlist.length; i++) {
+          indata.songlist[i].data.imglj = hqimg.replace(/liujie/, indata.songlist[i].data.albumid)
+        }
+        this.setData({
+          datas: indata.songlist
+        })
+      }).catch(err => {
+        console.log(err)
       })
-    }
+    stop = setInterval(function () {
+    speedOfProgress(_this)
+    }, 1000)
+  },
+  onHide:function(){
+    clearInterval(stop)
   }
 })

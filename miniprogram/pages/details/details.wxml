@@ -5,10 +5,10 @@
   </view>
   <view class="indetailsbox" style="height:{{zdyheight - 44}}px;">
     <block wx:for="{{datas}}" wx:key="index">
-      <view class="inbox" bindtap="bfhash" data-num="{{index}}" data-hash="{{item.sqhash}}" style="background:{{indexs==index?'pink':'back'}}" data-index="{{index}}">
-        <image class="boxinimg"></image>
-        <view class="boxintoptext" style="color:{{colors}};">{{item.remark}}</view>\n
-        <view class="boxintopname ">{{item.filename}}</view>
+      <view class="inbox" bindtap="bfhash" style="background:{{indexs==index?'pink':'back'}}" data-index="{{index}}">
+        <image class="boxinimg" src="{{item.data.imglj}}"></image>
+        <view class="boxintoptext" style="color:{{colors}};">{{item.data.songname}}</view>\n
+        <view class="boxintopname ">{{item.data.singer[0].name}}</view>
         <image class="boxintoprightbtn" src="../../images/bofangbtn.png "></image>
       </view>
     </block>

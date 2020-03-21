@@ -17,8 +17,8 @@ tab-bar{
   margin: 0 auto;
 }
 
-.tabBarbox {
-  padding-top: 10rpx;
+.topborder {
+  margin-bottom: 10rpx;
   border-top: 1px solid #696969;
 }
 
@@ -45,7 +45,7 @@ tab-bar{
   position: relative;
   bottom: 25rpx;
   display: inline-block;
-  width: 200rpx;
+  width: 300rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -67,11 +67,18 @@ tab-bar{
   width: 60rpx;
   height: 45rpx;
 }
+.progressBar{
+  width: 538rpx;
+  margin: 0 auto;
+  height: 14rpx;
+  border: 6rpx solid #0D0B21;
+}
+
 .bottztbtn {
   float: right;
   width: 60rpx;
   height: 60rpx;
-  border: 1px solid transparent;
+  border: 1rpx solid transparent;
   border-radius: 50%;
   margin-top: 10rpx;
   position: absolute;

@@ -1,7 +1,6 @@
 const app = getApp()
-import {
-  getAjax
-} from "../../public/public.js"
+import { huoqu, hqimg } from "../../Public-data/public.js"
+import { getAjax , goUpdate } from "../../Public-method/public.js"
 let suspend = ""
 Component({
   properties: {
@@ -25,11 +24,20 @@ Component({
     })
   },
   methods: {
+    // 点击歌曲播放
     musicid(el) {
-      getAjax(`http://m.kugou.com/app/i/getSongInfo.php?cmd=playInfo&hash=${el.currentTarget.dataset.id}`, {})
+      app.globalData.datas = this.data.datas
+      app.globalData.leng = app.globalData.datas.length
+      app.globalData.subscript = el.currentTarget.dataset.subscript
+      let itemdata = el.currentTarget.dataset.id
+      let huoquset = huoqu.replace(/liujie/, itemdata.songmid)
+      let hqimgset = hqimg.replace(/liujie/, itemdata.albumid)
+      getAjax(huoquset, {})
         .then(data => {
+          let indata = data.data.req_0.data
+          let mp3 = indata.sip[0] + indata.midurlinfo[0].purl
           let _this = this
-          if (data.data.error=="需要付费"){
+          if (indata.midurlinfo[0].purl==false){
             wx.showToast({
               title: '付费音乐'
             })
@@ -39,22 +47,15 @@ Component({
               values: "",
               datas: {}
             })
-            app.globalData.mp3 = data.data.url
-            app.globalData.songName = data.data.songName
+            app.globalData.hash = itemdata.songmid
+            app.globalData.imglj = hqimgset
+            app.globalData.mp3 = mp3
+            app.globalData.songName = itemdata.songname
             app.globalData.shouchangbtn = true
             app.globalData.bfbtn = true
             app.globalData.bottbfimgbtn = false
-            app.globalData.name = data.data.singerName
-            if (typeof _this.getTabBar === 'function' &&
-              _this.getTabBar()) {
-              _this.getTabBar().setData({
-                bottbfimgbtn: app.globalData.bottbfimgbtn,
-                singerName: app.globalData.name,
-                songName: app.globalData.songName,
-                bfbtn: app.globalData.bfbtn,
-                shouchangbtn: app.globalData.shouchangbtn
-              })
-            }
+            app.globalData.name = itemdata.singer[0].name
+            goUpdate(_this)
             // 播放音乐
             wx.playBackgroundAudio({
               dataUrl: app.globalData.mp3
@@ -70,14 +71,12 @@ Component({
         values: el.detail.value
       })
       clearTimeout(suspend)
-      suspend = setTimeout(function() {
-        getAjax(`http://msearchcdn.kugou.com/api/v3/search/song?showtype=14&highlight=em&pagesize=30&tag_aggr=1&tagtype=全部&plat=0&sver=5&keyword=${_this.data.values}&correct=1&api_ver=1&version=9108&page=1&area_code=1&tag=1&with_res_tag=1`, {})
+      suspend = setTimeout(function() {//p=分页 n=请求数量
+        getAjax(`https://c.y.qq.com/soso/fcgi-bin/client_search_cp?p=1&n=10&w=${_this.data.values }&format=json`, {})
           .then(data => {
-            let text = JSON.parse(data.data.replace(/<!--KG_TAG_RES_END-->|<!--KG_TAG_RES_START-->|<em>|<\\\/em>/g, ""))
             _this.setData({
-              datas: text.data.info.splice(0, 10)
+              datas: data.data.data.song.list
             })
-            console.log(_this.data.datas)
           }).catch(err => {
             console.log(err)
           })

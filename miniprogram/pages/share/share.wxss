@@ -2,6 +2,7 @@
 .sharebigbox {
   height: 100%;
   overflow: scroll;
+  padding-bottom: 200rpx;
 }
 
 .share-top {
