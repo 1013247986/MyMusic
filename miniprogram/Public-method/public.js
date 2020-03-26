@@ -5,7 +5,6 @@ import { huoqu } from "../Public-data/public.js"
 // 添加云端数据
 export const addto = function (forms, datas) {
   return new Promise((resolve, reject) => {
-
     db.collection(`${forms}`).add({
       data: datas,
       success: res => {
